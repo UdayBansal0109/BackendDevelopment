@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Successful</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .card {
+      background: #e8f5e9;
+      padding: 25px;
+      border-radius: 8px;
+      border-left: 5px solid #4CAF50;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Registration Successful</h1>
+    <p><strong>Name:</strong> <%= student.name %></p>
+    <p><strong>Email:</strong> <%= student.email %></p>
+    <p><strong>Course:</strong> <%= student.course %></p>
+    <p><strong>Semester:</strong> <%= student.semester %></p>
+  </div>
+  <p><a href="/register-form">Register another student</a></p>
+</body>
+</html>

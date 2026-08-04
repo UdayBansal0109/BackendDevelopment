@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration, JWT Login &amp; Todo API — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#labs">Lab Experiments</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-13B-Mongo-Todo-JWT">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>13B — Registration, JWT Login &amp; Todo API</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P)
+    </p>
+    <p class="meta">REST API with hashed passwords, JWT authentication middleware and per-user todo CRUD.</p>
+  </header>
+
+  <main class="content">
+<h2>Objective</h2>
+<p>Build a REST API where each user registers, logs in with a JWT and manages only their own todos.</p>
+<h2>Technologies</h2>
+<p>Node.js, Express.js, MongoDB, Mongoose, bcrypt, JSON Web Tokens</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Experiment-13B-Mongo-Todo-JWT/
+├── config/db.js          # mongoose.connect()
+├── models/User.js        # Validation + bcrypt pre(&#x27;save&#x27;) + comparePassword()
+├── models/Todo.js        # Todo belongs to a user, priority enum
+├── middleware/auth.js     # Verifies &quot;Authorization: Bearer &lt;JWT&gt;&quot;
+├── routes/auth.js        # register, login, me
+├── routes/todos.js       # Todo CRUD
+├── server.js
+├── .env.example          # Copy to .env (ignored by Git)
+└── test-output.txt
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+npm install
+copy .env.example .env     # set MONGODB_URI and JWT_SECRET
+npm run dev                # nodemon server.js
+</code></pre>
+<hr>
+<h2>API Endpoints</h2>
+<table><thead><tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Auth</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/auth/register</code></td>
+<td>—</td>
+<td>Create user (password hashed), returns JWT</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/auth/login</code></td>
+<td>—</td>
+<td>Returns JWT (valid 1 day)</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/auth/me</code></td>
+<td>Yes</td>
+<td>Current user, without password</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/todos?completed=true</code></td>
+<td>Yes</td>
+<td>List own todos</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/todos</code></td>
+<td>Yes</td>
+<td>Create todo</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/todos/:id</code></td>
+<td>Yes</td>
+<td>Read own todo</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><code>/api/todos/:id</code></td>
+<td>Yes</td>
+<td>Update own todo</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/api/todos/:id</code></td>
+<td>Yes</td>
+<td>Delete own todo</td>
+</tr>
+</tbody></table>
+<h2>Test Results</h2>
+<table><thead><tr>
+<th>Check</th>
+<th>Result</th>
+</tr></thead><tbody>
+<tr>
+<td>Register</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>Validation (short username, bad email, short password)</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Wrong password</td>
+<td>401</td>
+</tr>
+<tr>
+<td>No token</td>
+<td>401</td>
+</tr>
+<tr>
+<td>Create, invalid enum, list, update, filter, delete</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>Deleted todo</td>
+<td>404</td>
+</tr>
+<tr>
+<td><code>/me</code> hides the password hash</td>
+<td>Pass</td>
+</tr>
+</tbody></table>
+<p>Full output: <a href="test-output.txt">test-output.txt</a></p>
+<hr>
+<h2>Key Concepts</h2>
+<ul>
+<li><strong>bcrypt</strong> — one-way salted hash; plain passwords are never stored or compared directly.</li>
+<li><strong>JWT</strong> — signed <code>header.payload.signature</code>; the server verifies it with <code>JWT_SECRET</code> without needing session storage (stateless).</li>
+<li>Every todo query includes <code>user: req.user._id</code>, so users cannot see or delete others&#x27; todos.</li>
+<hr>
+</ul>
+<p><a href="../README.md">Lab Index</a> | <a href="../../README.md">Repository Home</a></p>
+
+<h2>Execution Screenshots</h2>
+<h3>Server Code</h3>
+<p>`server.js` in VS Code — Express app with MongoDB connection, JWT auth middleware and route mounting.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-13B-Mongo-Todo-JWT/screenshot/01-server-code.png" alt="Server Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>User Model Code</h3>
+<p>`models/User.js` in VS Code — Mongoose schema with bcrypt pre-save hook and `comparePassword()` method.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-13B-Mongo-Todo-JWT/screenshot/02-user-model-code.png" alt="User Model Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>Auth Middleware Code</h3>
+<p>`middleware/auth.js` in VS Code — JWT verification, Bearer token extraction and `req.user` injection.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-13B-Mongo-Todo-JWT/screenshot/03-auth-middleware-code.png" alt="Auth Middleware Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>Test Output</h3>
+<p>`test-output.txt` in VS Code — full test suite results: registration, login, CRUD, validation and security checks.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-13B-Mongo-Todo-JWT/screenshot/04-test-output.png" alt="Test Output" style="max-width:100%;border-radius:8px;margin:12px 0;">
+</main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#labs">Back to Lab Experiments</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-13A-Mongoose/Report.html">&larr; Previous: MongoDB + Mongoose Registration &amp; Login</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-15-Django-ToDo/Report.html">Next: Django To-Do App (Task Tracker) &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-13B-Mongo-Todo-JWT">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+===== Lab Exercise 2: curl GET /students/3 (Express) =====
+{"id":3,"name":"Rohan","branch":"IT"}
+
+===== Lab Exercise 5: curl -v (Express) - all response headers =====
+> GET /students HTTP/1.1
+> Host: localhost:3000
+> User-Agent: curl/8.21.0
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< X-Powered-By: Express
+< Content-Type: application/json; charset=utf-8
+< Content-Length: 155
+< ETag: W/"9b-ChQa+uX0TEIIEQWhk+wJ7xRM+hA"
+< Date: Wed, 25 Nov 2026 05:47:39 GMT
+< Connection: keep-alive
+< Keep-Alive: timeout=5
+< 
+
+===== Lab Exercise 4: node fetch-students.js =====
+Found 2 CSE students:
+┌─────────┬────┬─────────┬────────┐
+│ (index) │ id │ name    │ branch │
+├─────────┼────┼─────────┼────────┤
+│ 0       │ 1  │ 'Aarav' │ 'CSE'  │
+│ 1       │ 4  │ 'Kabir' │ 'CSE'  │
+└─────────┴────┴─────────┴────────┘
+===== Task 5: curl -v (Flask) =====
+> GET /students HTTP/1.1
+> Host: localhost:5000
+> User-Agent: curl/8.21.0
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< Server: Werkzeug/3.1.9 Python/3.14.3
+< Date: Wed, 25 Nov 2026 05:47:29 GMT
+< Content-Type: application/json
+< Content-Length: 190
+< Connection: close
+< 

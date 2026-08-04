@@ -1,0 +1,16 @@
+== Express: /students ==
+      1 <link rel="stylesheet" href="/css/style.css">
+      3 class="row-even"
+      2 class="row-odd"
+== Express: /about ==
+<p><strong>Course:</strong> Backend Development (CSFS3008P)
+<p><strong>Lecturer:</strong> Prateek Raj Gautam
+== Express: /css/style.css ==
+200 text/css; charset=utf-8
+== FastAPI: / ==
+    <!-- The value is calculated on the server for every request -->
+<p style="font-size: 1.5rem;">25 November 2026, 11:23:14 AM
+== FastAPI: /gallery ==
+<img src="http://127.0.0.1:8008/static/images/campus.svg" alt="Illustration of a university campus" width="480">
+== FastAPI: static image ==
+200 image/svg+xml

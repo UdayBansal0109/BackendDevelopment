@@ -1,0 +1,18 @@
+{
+  "info": {
+    "name": "Lecture 19 - Student Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "baseUrl", "value": "http://127.0.0.1:8000" }],
+  "item": [
+    { "name": "Create department", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"name\": \"Computer Science\"}" }, "url": "{{baseUrl}}/departments" } },
+    { "name": "Create student", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"name\": \"Aarav\", \"email\": \"aarav@example.com\", \"branch\": \"CSE\", \"department_id\": 1}" }, "url": "{{baseUrl}}/students" } },
+    { "name": "List students (filter + page)", "request": { "method": "GET", "url": "{{baseUrl}}/students?branch=CSE&search=aa&page=1&limit=10" } },
+    { "name": "Get student 1", "request": { "method": "GET", "url": "{{baseUrl}}/students/1" } },
+    { "name": "Patch student 1", "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"branch\": \"IT\"}" }, "url": "{{baseUrl}}/students/1" } },
+    { "name": "Create course (POST /courses)", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"id\": \"CS301\", \"title\": \"Backend Development\", \"credits\": 4, \"department_id\": 1}" }, "url": "{{baseUrl}}/courses" } },
+    { "name": "Enroll student 1 in CS301", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\"course_id\": \"CS301\", \"semester\": \"2026-ODD\"}" }, "url": "{{baseUrl}}/students/1/enrollments" } },
+    { "name": "List enrollments of student 1", "request": { "method": "GET", "url": "{{baseUrl}}/students/1/enrollments" } },
+    { "name": "Delete student 1", "request": { "method": "DELETE", "url": "{{baseUrl}}/students/1" } }
+  ]
+}

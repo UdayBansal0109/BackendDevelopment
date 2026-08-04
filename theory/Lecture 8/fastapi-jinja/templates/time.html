@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Current Date and Time</title>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 60px;">
+    <h1>Current Date and Time</h1>
+    <!-- The value is calculated on the server for every request -->
+    <p style="font-size: 1.5rem;">{{ now }}</p>
+    <p>Refresh the page to see the time change. <a href="{{ url_for('gallery') }}">Gallery</a></p>
+</body>
+</html>

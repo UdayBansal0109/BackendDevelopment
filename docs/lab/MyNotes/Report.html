@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyNotes – Mid-Semester Lab Exam (Set A) — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#labs">Lab Experiments</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/MyNotes">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>Mid-Sem — MyNotes – Mid-Semester Lab Exam (Set A)</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P)
+    </p>
+    <p class="meta">Notes application that adds, lists and deletes notes stored in MongoDB, rendered with EJS.</p>
+  </header>
+
+  <main class="content">
+<h2>Objective</h2>
+<p>Build a notes application that adds, lists and deletes notes stored in MongoDB, rendered with EJS.</p>
+<h2>Technologies</h2>
+<p>Node.js, Express.js, EJS, MongoDB (native driver)</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+MyNotes/
+├── server.js          # Express routes + MongoDB driver
+├── views/
+│   ├── index.ejs      # List of notes
+│   └── new.ejs        # Add-note form
+├── public/style.css
+└── screenshot/        # Screenshots
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+npm install
+node server.js       # MongoDB must be running on 127.0.0.1:27017
+</code></pre>
+<hr>
+<h2>Routes</h2>
+<table><thead><tr>
+<th>Method</th>
+<th>Route</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/</code></td>
+<td>Display all notes (title, content, category, date, delete button)</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/notes/new</code></td>
+<td>Add-note form</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/notes</code></td>
+<td>Validate title and content, insert, redirect</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/notes/:id/delete</code></td>
+<td>Delete the note by its <code>ObjectId</code></td>
+</tr>
+</tbody></table>
+<h2>Screenshots</h2>
+<table><thead><tr>
+<th>Server Running</th>
+<th>Empty Notes</th>
+</tr></thead><tbody>
+<tr>
+<td>![](screenshot/01-server-running.png.png)</td>
+<td>![](screenshot/02-empty-notes.png.png)</td>
+</tr>
+<tr>
+<td><strong>Add-Note Form</strong></td>
+<td><strong>Filled Form</strong></td>
+</tr>
+<tr>
+<td>![](screenshot/03-add-note-form.png.png)</td>
+<td>![](screenshot/04-filled-note-form.png.png)</td>
+</tr>
+</tbody></table>
+<hr>
+<p><a href="../README.md">Lab Index</a> | <a href="../../README.md">Repository Home</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#labs">Back to Lab Experiments</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-15-Django-ToDo/Report.html">&larr; Previous: Django To-Do App (Task Tracker)</a>
+    
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/MyNotes">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

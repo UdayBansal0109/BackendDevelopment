@@ -1,0 +1,6 @@
+$ npm start
+Server listening on http://localhost:3025
+$ curl -i http://localhost:3025/
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+API is running

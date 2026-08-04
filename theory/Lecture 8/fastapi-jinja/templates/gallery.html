@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Static Image</title>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 40px;">
+    <h1>Static Image Demo</h1>
+    <!-- url_for('static', path=...) builds the URL /static/images/campus.svg -->
+    <img src="{{ url_for('static', path=image_name) }}" alt="Illustration of a university campus" width="480">
+    <p>{{ caption }}</p>
+    <p><a href="{{ url_for('show_time') }}">Back</a></p>
+</body>
+</html>

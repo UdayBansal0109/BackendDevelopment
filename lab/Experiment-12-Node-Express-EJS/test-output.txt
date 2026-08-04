@@ -1,0 +1,26 @@
+$ curl "localhost:3000/text"
+Name: Uday Bansal | Roll No (SAP ID): 590013278 | Branch: Core CSE
+
+$ curl "localhost:3000/html"
+<h1>HTML Response</h1><p><strong>Name:</strong> Uday Bansal</p><p><strong>Roll No (SAP ID):</strong> 590013278</p><p><strong>Branch:</strong> Core CSE</p>
+
+$ curl "localhost:3000/json"
+{"message":"This is JSON response","status":"success","data":{"name":"Uday Bansal","rollNo":"590013278","sapId":"590013278","branch":"Core CSE","college":"UPES","course":"Backend Development"}}
+
+$ curl "localhost:3000/calculate?num1=10&num2=3&operation=modulus"
+{"num1":10,"num2":3,"operation":"modulus","result":1}
+
+$ curl "localhost:3000/calculate?num1=2&num2=10&operation=power"
+{"num1":2,"num2":10,"operation":"power","result":1024}
+
+$ curl "localhost:3000/students"
+[{"id":1,"name":"Aarav Sharma","course":"B.Tech CSE","semester":5},{"id":2,"name":"Diya Verma","course":"B.Tech IT","semester":3},{"id":3,"name":"Rohan Gupta","course":"B.Tech CSE","semester":5},{"id":4,"name":"Kabir","course":"BCA","semester":2}]
+
+$ curl "localhost:3000/students/2"
+{"id":2,"name":"Diya Verma","course":"B.Tech IT","semester":3}
+
+$ curl "localhost:3000/students/99"
+{"message":"Student not found"}
+
+$ curl -X POST localhost:3000/students/add -H 'Content-Type: application/json' -d '{"name":"Kabir","course":"BCA","semester":2}'
+{"message":"Student added successfully","student":{"id":5,"name":"Kabir","course":"BCA","semester":2}}

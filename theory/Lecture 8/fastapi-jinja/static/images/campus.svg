@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="260" viewBox="0 0 480 260">
+  <rect width="480" height="260" fill="#cfe8ff"/>
+  <circle cx="400" cy="60" r="30" fill="#ffd54f"/>
+  <rect x="0" y="200" width="480" height="60" fill="#7cb342"/>
+  <rect x="140" y="90" width="200" height="110" fill="#eceff1" stroke="#546e7a" stroke-width="3"/>
+  <polygon points="130,90 240,40 350,90" fill="#8d6e63"/>
+  <rect x="220" y="150" width="40" height="50" fill="#5d4037"/>
+  <rect x="160" y="110" width="35" height="30" fill="#90caf9"/>
+  <rect x="285" y="110" width="35" height="30" fill="#90caf9"/>
+  <text x="240" y="245" font-family="Arial" font-size="18" text-anchor="middle" fill="#ffffff">Campus Block</text>
+</svg>

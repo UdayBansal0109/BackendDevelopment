@@ -1,0 +1,15 @@
+{
+  "name": "lecture-15",
+  "version": "1.0.0",
+  "description": "Lecture 15 - Mongoose blog schemas",
+  "main": "blog-models.js",
+  "scripts": {
+    "test": "node test-blog-models.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "mongoose": "^9.13.1"
+  }
+}

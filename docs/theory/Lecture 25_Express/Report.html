@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to Express.js — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2025_Express">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L25 — Introduction to Express.js</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 3: Backend Frameworks</strong>
+    </p>
+    <p class="meta">Project setup for the Student Management System – app.js answering “API is running”.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 3:</strong> Backend Frameworks</p>
+<h2>Objective</h2>
+<p>Set up an Express project and an <code>app.js</code> that answers &quot;API is running&quot; on <code>/</code>.</p>
+<h2>Technologies</h2>
+<p>Node.js, Express.js, nodemon</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Lecture 25_Express/
+├── app.js            # Express server
+├── package.json      # scripts: start, dev
+└── test-output.txt   # curl result
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+npm install
+npm start        # node app.js
+npm run dev      # nodemon app.js — auto-restart on changes
+</code></pre>
+<hr>
+<h2>Assessment Criteria</h2>
+<table><thead><tr>
+<th>Criterion</th>
+<th>Evidence</th>
+</tr></thead><tbody>
+<tr>
+<td>Environment setup — correct <code>package.json</code></td>
+<td>name, <code>main: app.js</code>, scripts <code>start</code>/<code>dev</code>, <code>express</code> dependency, <code>nodemon</code> dev dependency</td>
+</tr>
+<tr>
+<td>Server listens and responds to <code>/</code></td>
+<td><code>HTTP/1.1 200 OK</code> with body <code>API is running</code></td>
+</tr>
+</tbody></table>
+<hr>
+<p><a href="../Lecture%2019_RESTful_APIs/README.md">Lecture 19</a> | <a href="../README.md">Theory Index</a> | <a href="../Lecture%2026_Django_Framework/README.md">Lecture 26</a></p>
+
+<h2>Execution Screenshots</h2>
+<h3>Express App Code</h3>
+<p>`app.js` in VS Code — Express server setup with middleware and route configuration.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 25_Express/screenshot/01-express-app-code.png" alt="Express App Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>Test Output</h3>
+<p>`test-output.txt` in VS Code — server startup confirmation and curl response showing `API is running`.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 25_Express/screenshot/02-test-output.png" alt="Test Output" style="max-width:100%;border-radius:8px;margin:12px 0;">
+</main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2019_RESTful_APIs/Report.html">&larr; Previous: Implementing RESTful APIs</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2026_Django_Framework/Report.html">Next: Django Framework (with L27–L31 features) &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2025_Express">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

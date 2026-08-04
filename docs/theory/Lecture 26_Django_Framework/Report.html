@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django Framework (with L27–L31 features) — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2026_Django_Framework">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L26 — Django Framework (with L27–L31 features)</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 3: Backend Frameworks</strong>
+    </p>
+    <p class="meta">Django Student API extended with logging middleware, a third-party API, auth &amp; permissions, and caching.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 3:</strong> Backend Frameworks | Covers Lectures 26–31</p>
+<h2>Objective</h2>
+<p>Build one Django project extended lecture by lecture: middleware, third-party APIs, testing, security and caching.</p>
+<h2>Technologies</h2>
+<p>Python, Django, SQLite, uv</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Lecture 26_Django_Framework/
+├── student_system/        # settings.py (middleware, LOGIN_URL, CACHES, LOGGING), urls.py
+├── students/
+│   ├── models.py          # Department, Course, Student (FK + M2M)
+│   ├── views.py           # JSON endpoints
+│   ├── urls.py            # Named routes
+│   ├── middleware.py      # Request logging (L27)
+│   ├── utils.py           # External API service (L28)
+│   ├── tests.py           # 19 tests (L29)
+│   └── templates/registration/login.html   # (L30)
+├── test-output.txt
+├── request-log-output.txt
+├── performance-output.txt
+└── screenshots/
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+uv sync
+uv run python manage.py migrate
+uv run python manage.py createsuperuser
+uv run python manage.py runserver
+uv run python manage.py test students
+</code></pre>
+<hr>
+<h2>What Each Lecture Added</h2>
+<table><thead><tr>
+<th>Lecture</th>
+<th>Feature</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>26</strong></td>
+<td>Project + app, <code>GET /</code> welcome JSON</td>
+</tr>
+<tr>
+<td><strong>27</strong></td>
+<td><code>SimpleLoggingMiddleware</code> (method, path, status, time + <code>X-Response-Time-ms</code>), health / list / detail routes</td>
+</tr>
+<tr>
+<td><strong>28</strong></td>
+<td><code>requests</code> service with a 2 s timeout, 503 when the external API fails</td>
+</tr>
+<tr>
+<td><strong>29</strong></td>
+<td>Tests for endpoints, models and a mocked external service</td>
+</tr>
+<tr>
+<td><strong>30</strong></td>
+<td>Login page, <code>@login_required</code>, <code>@permission_required(&quot;students.view_student&quot;)</code></td>
+</tr>
+<tr>
+<td><strong>31</strong></td>
+<td>N+1 fix with <code>select_related</code> + <code>prefetch_related</code>, 5-minute cached summary</td>
+</tr>
+</tbody></table>
+<h2>Endpoints</h2>
+<table><thead><tr>
+<th>URL</th>
+<th>Name</th>
+<th>Notes</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/</code></td>
+<td><code>home</code></td>
+<td>Welcome JSON</td>
+</tr>
+<tr>
+<td><code>/api/health/</code></td>
+<td><code>health-check</code></td>
+<td><code>{&quot;status&quot;: &quot;ok&quot;}</code></td>
+</tr>
+<tr>
+<td><code>/api/students/</code></td>
+<td><code>student-list</code></td>
+<td>Optimized — 2 queries</td>
+</tr>
+<tr>
+<td><code>/api/students/&lt;id&gt;/</code></td>
+<td><code>student-detail</code></td>
+<td>404 JSON if missing</td>
+</tr>
+<tr>
+<td><code>/api/students/unoptimized/</code></td>
+<td><code>student-list-unoptimized</code></td>
+<td>N+1 version for comparison</td>
+</tr>
+<tr>
+<td><code>/api/students/summary/</code></td>
+<td><code>student-summary</code></td>
+<td>Cached 300 s</td>
+</tr>
+<tr>
+<td><code>/api/students/external/&lt;post_id&gt;/</code></td>
+<td><code>external-data</code></td>
+<td>JSONPlaceholder post or 503</td>
+</tr>
+<tr>
+<td><code>/secure-data/</code></td>
+<td><code>secure-data</code></td>
+<td>Login required</td>
+</tr>
+<tr>
+<td><code>/student-records/</code></td>
+<td><code>student-records</code></td>
+<td>Needs permission</td>
+</tr>
+<tr>
+<td><code>/accounts/login/</code></td>
+<td>—</td>
+<td>Django auth</td>
+</tr>
+<tr>
+<td><code>/admin/</code></td>
+<td>—</td>
+<td>Django admin</td>
+</tr>
+</tbody></table>
+<h2>Results</h2>
+<table><thead><tr>
+<th>Check</th>
+<th>Result</th>
+</tr></thead><tbody>
+<tr>
+<td>Test suite</td>
+<td>19 tests OK</td>
+</tr>
+<tr>
+<td>Anonymous accessing <code>/secure-data/</code></td>
+<td>302 redirect to login</td>
+</tr>
+<tr>
+<td>Regular user accessing <code>/student-records/</code></td>
+<td>403</td>
+</tr>
+<tr>
+<td>Student list, 50 students</td>
+<td>101 queries reduced to 2, 103 ms to 6 ms</td>
+</tr>
+<tr>
+<td>Cached summary, 2nd request</td>
+<td>0 queries</td>
+</tr>
+</tbody></table>
+<p>Evidence: <a href="test-output.txt">test-output.txt</a>, <a href="request-log-output.txt">request-log-output.txt</a>, <a href="performance-output.txt">performance-output.txt</a></p>
+<h2>Screenshot</h2>
+<hr>
+<p><a href="../Lecture%2025_Express/README.md">Lecture 25</a> | <a href="../README.md">Theory Index</a> | <a href="../Lecture%2029_Django_Testing_Debugging/README.md">Lecture 29</a></p>
+
+<h2>Execution Screenshots</h2>
+
+<h3>Django Student API response</h3>
+<figure style="text-align:center; margin:1rem 0;">
+  <img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture%2026_Django_Framework/screenshots/lecture26_api_output.png.png" alt="Django Student API response" style="max-width:100%; border:1px solid #e2e7ef; border-radius:8px;">
+  <figcaption style="color:#5b6577; font-size:0.88rem; margin-top:0.5rem;">Django Student API response</figcaption>
+</figure>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2025_Express/Report.html">&larr; Previous: Introduction to Express.js</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2029_Django_Testing_Debugging/Report.html">Next: Testing &amp; Debugging Django &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2026_Django_Framework">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

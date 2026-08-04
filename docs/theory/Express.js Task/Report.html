@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Express.js Task – Containerized App — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Express.js%20Task">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>Task — Express.js Task – Containerized App</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 4: Deployment, CI/CD and Scaling</strong>
+    </p>
+    <p class="meta">An Express API tested locally, packaged into a Docker image on Ubuntu and run as a container.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 4:</strong> Deployment, CI/CD and Scaling</p>
+<h2>Objective</h2>
+<p>Build a small Express API, test it locally, package it into a Docker image on Ubuntu, export and run again.</p>
+<h2>Technologies</h2>
+<p>Node.js, Express.js, Docker, Ubuntu</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Express.js Task/
+├── express-project/
+│   ├── app.js
+│   └── package.json     # scripts: start, dev
+└── screenshots/         # 8 screenshots of every step
+</code></pre>
+<h2>Routes</h2>
+<table><thead><tr>
+<th>Method</th>
+<th>Route</th>
+<th>Response</th>
+</tr></thead><tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/</code></td>
+<td><code>Hello! Express is running inside Docker.</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/students</code></td>
+<td>JSON list of students</td>
+</tr>
+</tbody></table>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+cd express-project
+npm install
+npm start                       # http://localhost:3000
+</code></pre>
+<hr>
+<h2>Steps Performed</h2>
+<table><thead><tr>
+<th>#</th>
+<th>Step</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Test the app locally</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Check <code>/api/students</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Check Node.js and npm versions on Ubuntu</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Copy the project files into the build folder</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Install dependencies</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Build and export the Docker image (<code>express-project-v1.tar</code>)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Run the container — home page</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Run the container — students API</td>
+</tr>
+</tbody></table>
+<h2>Screenshots</h2>
+<table><thead><tr>
+<th>Local Test</th>
+<th>Students API</th>
+</tr></thead><tbody>
+<tr>
+<td>![](screenshots/01_express_local_test.png.png)</td>
+<td>![](screenshots/02_express_students_api.png.png)</td>
+</tr>
+<tr>
+<td><strong>Node and npm Versions</strong></td>
+<td><strong>Files Copied</strong></td>
+</tr>
+<tr>
+<td>![](screenshots/03_ubuntu_node_npm_versions.png.png)</td>
+<td>![](screenshots/04_express_files_copied.png.png)</td>
+</tr>
+<tr>
+<td><strong>Dependencies Installed</strong></td>
+<td><strong>Image Export</strong></td>
+</tr>
+<tr>
+<td>![](screenshots/05_express_dependencies_installed.png.png)</td>
+<td>![](screenshots/06_express_image_export.png.png)</td>
+</tr>
+<tr>
+<td><strong>Docker — Home Page</strong></td>
+<td><strong>Docker — Students API</strong></td>
+</tr>
+<tr>
+<td>![](screenshots/07_express_docker_homepage.png.png)</td>
+<td>![](screenshots/08_express_docker_students_api.png.png)</td>
+</tr>
+</tbody></table>
+<hr>
+<p><a href="../README.md">Theory Index</a> | <a href="../Lecture%2037-39_Docker_Deployment/README.md">Lectures 37-39</a> | <a href="../../README.md">Repository Home</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Docker%20Basic%20Commands/Report.html">&larr; Previous: Docker Basic Commands</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2037-39_Docker_Deployment/Report.html">Next: Deployment &amp; Containerization &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Express.js%20Task">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

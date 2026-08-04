@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to Databases — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2013">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L13 — Introduction to Databases</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 2: Databases and RESTful APIs</strong>
+    </p>
+    <p class="meta">Relational vs document databases – the same queries in PostgreSQL and MongoDB.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 2:</strong> Databases and RESTful APIs</p>
+<h2>Objective</h2>
+<p>Compare relational (PostgreSQL) and document (MongoDB) databases by running the same queries on both.</p>
+<h2>Technologies</h2>
+<p>PostgreSQL, MongoDB</p>
+<hr>
+<p>This lecture&#x27;s lab exercise is the same as optional Lab Experiment 14; its scripts are not included in this repository.</p>
+<h2>Lab Exercise Requirements</h2>
+<table><thead><tr>
+<th>#</th>
+<th>Requirement</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Install PostgreSQL (preferred) or MySQL and create the database <code>student_management</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create <code>students(id, name, branch, email, enrollment_date)</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Insert at least 5 records</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Queries: CSE students, enrolled after Jan 2024, update a branch, delete a record</td>
+</tr>
+<tr>
+<td>5</td>
+<td>MongoDB <code>students</code> collection with at least 3 documents</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Compare the SQL and MongoDB experience</td>
+</tr>
+</tbody></table>
+<h2>Same Queries in SQL and MongoDB</h2>
+<table><thead><tr>
+<th>Task</th>
+<th>PostgreSQL</th>
+<th>MongoDB</th>
+</tr></thead><tbody>
+<tr>
+<td>CSE students</td>
+<td><code>SELECT * FROM students WHERE branch = &#x27;CSE&#x27;;</code></td>
+<td><code>db.students.find({ branch: &quot;CSE&quot; })</code></td>
+</tr>
+<tr>
+<td>After Jan 2024</td>
+<td><code>WHERE enrollment_date &gt; &#x27;2024-01-31&#x27;</code></td>
+<td><code>{ enrollmentDate: { $gt: new Date(&quot;2024-01-31&quot;) } }</code></td>
+</tr>
+<tr>
+<td>Update branch</td>
+<td><code>UPDATE students SET branch = &#x27;IT&#x27; WHERE id = 2;</code></td>
+<td><code>updateOne({ _id }, { $set: { branch: &quot;IT&quot; } })</code></td>
+</tr>
+<tr>
+<td>Delete</td>
+<td><code>DELETE FROM students WHERE id = 5;</code></td>
+<td><code>deleteOne({ _id })</code></td>
+</tr>
+</tbody></table>
+<h2>Key Concepts</h2>
+<table><thead><tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>DBMS</strong></td>
+<td>Software that stores, retrieves and protects data (PostgreSQL, MySQL, MongoDB)</td>
+</tr>
+<tr>
+<td><strong>Relational (SQL)</strong></td>
+<td>Tables with a fixed schema, foreign keys, joins, ACID transactions</td>
+</tr>
+<tr>
+<td><strong>Document (NoSQL)</strong></td>
+<td>JSON-like documents, flexible schema, easy horizontal scaling</td>
+</tr>
+<tr>
+<td><strong>ACID</strong></td>
+<td>Atomicity, Consistency, Isolation, Durability</td>
+</tr>
+</tbody></table>
+<hr>
+<p><a href="../Lecture%208/README.md">Lecture 8</a> | <a href="../README.md">Theory Index</a> | <a href="../Lecture%2014/README.md">Lecture 14</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%208/Report.html">&larr; Previous: Server-Side Rendering &amp; Templating</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2014/Report.html">Next: Schema Design &amp; Normalization &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2013">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

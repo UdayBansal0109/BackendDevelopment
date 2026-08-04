@@ -1,0 +1,5 @@
+50 students, 3 courses, average of 20 requests (Django test client, SQLite)
+/api/students/unoptimized/     queries=101  avg=103.46 ms
+/api/students/                 queries=2    avg=6.08 ms
+/api/students/summary/ first request  queries=2
+/api/students/summary/ second request queries=0 from_cache=True

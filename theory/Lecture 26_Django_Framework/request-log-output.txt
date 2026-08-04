@@ -1,0 +1,11 @@
+Middleware log (Lecture 27) - runserver with 50 seeded students
+
+2026-11-25 11:44:12,669 INFO students.requests: GET / -> 200 (19.31 ms)
+2026-11-25 11:44:12,975 INFO students.requests: GET /api/health/ -> 200 (1.17 ms)
+2026-11-25 11:44:13,304 INFO students.requests: GET /api/students/ -> 200 (18.16 ms)
+2026-11-25 11:44:13,616 INFO students.requests: GET /api/students/3/ -> 200 (12.52 ms)
+2026-11-25 11:44:13,921 INFO students.requests: GET /api/students/999/ -> 404 (5.06 ms)
+2026-11-25 11:44:15,828 INFO students.requests: GET /api/students/external/1/ -> 200 (1598.91 ms)
+2026-11-25 11:44:16,153 INFO students.requests: GET /api/students/summary/ -> 200 (8.27 ms)
+2026-11-25 11:44:16,457 INFO students.requests: GET /api/students/summary/ -> 200 (1.41 ms)
+2026-11-25 11:44:16,782 INFO students.requests: GET /secure-data/ -> 302 (14.41 ms)

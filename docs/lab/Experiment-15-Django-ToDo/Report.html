@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django To-Do App (Task Tracker) — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#labs">Lab Experiments</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-15-Django-ToDo">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>15 — Django To-Do App (Task Tracker)</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P)
+    </p>
+    <p class="meta">Template inheritance, static files, CSRF-safe actions, Django Admin and 14 automated tests.</p>
+  </header>
+
+  <main class="content">
+<h2>Objective</h2>
+<p>Build a branded, responsive task tracker with Django using template inheritance, static files, CSRF-safe actions and Django Admin.</p>
+<h2>Technologies</h2>
+<p>Python, Django, SQLite, uv</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Experiment-15-Django-ToDo/
+├── todo_project/          # settings.py, urls.py
+├── todo/
+│   ├── models.py          # Task(title, completed, created_at)
+│   ├── views.py           # task_list, add_task, toggle_task (POST), delete_task (POST)
+│   ├── urls.py            # Named routes
+│   ├── admin.py           # list_display, list_filter, search_fields, list_editable
+│   ├── tests.py           # 14 tests
+│   ├── templates/todo/    # base, header, footer, task_list, add_task
+│   └── static/todo/       # css/style.css, js/app.js, images/logo.png
+└── Experiment-15-Screenshots/
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+uv sync
+uv run python manage.py migrate
+uv run python manage.py createsuperuser
+uv run python manage.py runserver        # http://127.0.0.1:8000
+uv run python manage.py test todo        # 14 tests
+</code></pre>
+<hr>
+<h2>Requirement Checklist</h2>
+<table><thead><tr>
+<th>Requirement</th>
+<th>Where</th>
+</tr></thead><tbody>
+<tr>
+<td>List / add / toggle / delete tasks, empty-list message</td>
+<td><code>views.py</code>, <code>{% empty %}</code> in <code>task_list.html</code></td>
+</tr>
+<tr>
+<td>Tasks survive a restart</td>
+<td>SQLite via the Django ORM</td>
+</tr>
+<tr>
+<td>CSRF + POST for every change</td>
+<td><code>{% csrf_token %}</code>, <code>@require_POST</code></td>
+</tr>
+<tr>
+<td>Admin with list display, filter and search</td>
+<td><code>admin.py</code></td>
+</tr>
+<tr>
+<td><code>base.html</code> with blocks + header/footer <code>{% include %}</code></td>
+<td><code>templates/todo/</code></td>
+</tr>
+<tr>
+<td>Named URLs with <code>{% url %}</code></td>
+<td>All templates</td>
+</tr>
+<tr>
+<td>Page-specific block</td>
+<td><code>extra_css</code> / <code>extra_js</code> — live character counter on Add Task</td>
+</tr>
+<tr>
+<td>Static CSS, JS and logo with <code>{% static %}</code></td>
+<td><code>base.html</code>, <code>header.html</code></td>
+</tr>
+<tr>
+<td>Responsive layout</td>
+<td><code>@media (max-width: 600px)</code></td>
+</tr>
+<tr>
+<td>JS enhancement</td>
+<td>Focus on input, delete confirmation, character counter</td>
+</tr>
+</tbody></table>
+<h2>Screenshots</h2>
+<table><thead><tr>
+<th>Home Page</th>
+<th>Add Task</th>
+</tr></thead><tbody>
+<tr>
+<td>![](&lt;Experiment-15-Screenshots/Screenshot 1 — Home page.png&gt;)</td>
+<td>![](&lt;Experiment-15-Screenshots/Screenshot 2 — Add Task page.png&gt;)</td>
+</tr>
+<tr>
+<td><strong>Django Admin</strong></td>
+<td><strong>Task Operations</strong></td>
+</tr>
+<tr>
+<td>![](&lt;Experiment-15-Screenshots/Screenshot 3 — Django Admin.png&gt;)</td>
+<td>![](&lt;Experiment-15-Screenshots/Screenshot 4 — Task operations.png&gt;)</td>
+</tr>
+</tbody></table>
+<h2>Tests (14 Passing)</h2>
+<p>Covers model creation, task list view, add/toggle/delete via POST, CSRF rejection on GET, empty-list message and admin registration.</p>
+<hr>
+<h2>Key Concepts</h2>
+<p><strong><code>admin.py</code> vs <code>apps.py</code>:</strong></p>
+<p><code>admin.py</code> registers models with the admin site and customises how they are listed. <code>apps.py</code> holds the app configuration (<code>TodoConfig</code>: name, <code>verbose_name</code>, <code>ready()</code>); it is not for model registration.</p>
+<p><strong><code>extends</code> vs <code>include</code>:</strong></p>
+<p><code>{% extends &#x27;todo/base.html&#x27; %}</code> is inheritance — the page fills the blocks of one parent layout. <code>{% include &#x27;todo/header.html&#x27; %}</code> is composition — it inserts a small reusable piece.</p>
+<hr>
+<p><a href="../README.md">Lab Index</a> | <a href="../../README.md">Repository Home</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#labs">Back to Lab Experiments</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-13B-Mongo-Todo-JWT/Report.html">&larr; Previous: Registration, JWT Login &amp; Todo API</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/MyNotes/Report.html">Next: MyNotes – Mid-Semester Lab Exam (Set A) &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-15-Django-ToDo">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

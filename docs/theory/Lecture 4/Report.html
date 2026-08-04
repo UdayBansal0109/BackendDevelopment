@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP Requests, DevTools, curl, Postman &amp; fetch — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%204">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L04 — HTTP Requests, DevTools, curl, Postman &amp; fetch</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 1: Introduction to Backend Development</strong>
+    </p>
+    <p class="meta">Inspecting requests with curl -v, a Postman collection and a fetch() script that filters CSE students.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 1:</strong> Introduction to Backend Development</p>
+<h2>Objective</h2>
+<p>Inspect the same HTTP request with four different tools: browser DevTools, curl, Postman and <code>fetch()</code>.</p>
+<h2>Technologies</h2>
+<p>HTTP, curl, Postman, JavaScript fetch API</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Lecture 4/
+├── fetch-students.js                    # fetch() + client-side filter for CSE
+├── Student-API.postman_collection.json  # Import into Postman
+└── curl-output.txt                      # curl and curl -v results
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+# Start the Lecture 3 servers first, then:
+node fetch-students.js
+curl http://localhost:3000/students/3
+curl -v http://localhost:3000/students
+</code></pre>
+<p>Postman: <strong>File, Import</strong>, select <code>Student-API.postman_collection.json</code>.</p>
+<hr>
+<h2>Lab Exercise</h2>
+<table><thead><tr>
+<th>#</th>
+<th>Requirement</th>
+<th>Result</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>DevTools screenshot of <code>GET /students</code></td>
+<td>Capture in the browser (F12, Network)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>curl <code>/students/3</code> and verify</td>
+<td><code>{&quot;id&quot;:3,&quot;name&quot;:&quot;Rohan&quot;,&quot;branch&quot;:&quot;IT&quot;}</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Postman request to Flask, saved in a collection</td>
+<td><code>Student-API.postman_collection.json</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>fetch()</code> all students, filter CSE in the client</td>
+<td>2 students: Aarav, Kabir</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>curl -v</code> — Express response headers</td>
+<td>See table below</td>
+</tr>
+</tbody></table>
+<h2>Express Response Headers (`curl -v`)</h2>
+<table><thead><tr>
+<th>Header</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><code>HTTP/1.1 200 OK</code></td>
+<td>Status line</td>
+</tr>
+<tr>
+<td><code>X-Powered-By: Express</code></td>
+<td>Framework name (disable in production with <code>app.disable(&#x27;x-powered-by&#x27;)</code>)</td>
+</tr>
+<tr>
+<td><code>Content-Type: application/json; charset=utf-8</code></td>
+<td>Set by <code>res.json()</code></td>
+</tr>
+<tr>
+<td><code>Content-Length: 155</code></td>
+<td>Body size in bytes</td>
+</tr>
+<tr>
+<td><code>ETag: W/&quot;9b-…&quot;</code></td>
+<td>Version tag for caching (304 Not Modified)</td>
+</tr>
+<tr>
+<td><code>Connection: keep-alive</code></td>
+<td>The TCP connection is reused</td>
+</tr>
+</tbody></table>
+<p>Flask answers with <code>Server: Werkzeug/3.1.9</code> and <code>Connection: close</code> — same HTTP structure, different server. HTTP is a protocol, independent of the framework.</p>
+<h2>Anatomy of an HTTP Exchange</h2>
+<pre><code>
+GET /students HTTP/1.1          &lt;- method, path, version
+Host: localhost:3000            &lt;- headers
+Accept: */*
+                                &lt;- blank line (+ optional body)
+
+HTTP/1.1 200 OK                 &lt;- version, status code, reason
+Content-Type: application/json  &lt;- headers
+                                &lt;- blank line
+[{&quot;id&quot;:1, ...}]                 &lt;- body
+</code></pre>
+<hr>
+<p><a href="../Lecture%203/README.md">Lecture 3</a> | <a href="../README.md">Theory Index</a> | <a href="../Lecture%205/README.md">Lecture 5</a></p>
+
+<h2>Execution Screenshots</h2>
+<h3>Fetch Students Code</h3>
+<p>`fetch-students.js` open in VS Code — uses `fetch()` to call the Express API and display students in a formatted table.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 4/screenshot/01-fetch-students-code.png" alt="Fetch Students Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>curl Output</h3>
+<p>`curl-output.txt` in VS Code — raw HTTP responses from `curl` commands against the Express server.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 4/screenshot/02-curl-output.png" alt="curl Output" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>curl Verbose Output</h3>
+<p>Continued curl output showing verbose `-v` headers: request/response headers, status codes, and content types.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 4/screenshot/03-curl-verbose-output.png" alt="curl Verbose Output" style="max-width:100%;border-radius:8px;margin:12px 0;">
+</main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%203/Report.html">&larr; Previous: Setting Up the Backend Environment</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%205/Report.html">Next: RESTful APIs with FastAPI &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%204">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

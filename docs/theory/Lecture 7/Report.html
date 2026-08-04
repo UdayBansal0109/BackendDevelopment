@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>localStorage, sessionStorage &amp; JSON — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%207">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L07 — localStorage, sessionStorage &amp; JSON</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 1: Introduction to Backend Development</strong>
+    </p>
+    <p class="meta">Web Storage exercises and the JSON stringify/parse problem; the final task is Assignment I.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 1:</strong> Introduction to Backend Development</p>
+<h2>Objective</h2>
+<p>Store data in the browser using the Web Storage API and understand why objects must be converted to JSON first.</p>
+<p>The final task (Notes App) became <a href="../Assignment/Assignment%201/README.md">Assignment 1</a>.</p>
+<hr>
+<h2>Exercise 2.1 — localStorage</h2>
+<ol>
+<li><code>localStorage.setItem(&quot;favColor&quot;, &quot;blue&quot;)</code> then <code>getItem(&quot;favColor&quot;)</code> returns <code>&quot;blue&quot;</code>.</li>
+<li>DevTools, Application, Local Storage shows <code>favColor = blue</code>.</li>
+<li>After <code>clear()</code> and a refresh the key is gone (<code>getItem</code> returns <code>null</code>).</li>
+</ol>
+<h2>Exercise 3.1 — &quot;The Disappearing Act&quot; (sessionStorage)</h2>
+<ul>
+<li><code>sessionStorage.setItem(&quot;tempData&quot;, &quot;hello&quot;)</code> then <code>getItem</code> returns <code>&quot;hello&quot;</code>.</li>
+<li>After closing the tab and reopening, <code>getItem(&quot;tempData&quot;)</code> returns <code>null</code>.</li>
+<li>The same steps with localStorage keep the value.</li>
+</ul>
+<h2>The JSON Problem</h2>
+<pre><code class="language-js">
+localStorage.setItem(&quot;user&quot;, { name: &quot;Alice&quot; });       // stores &quot;[object Object]&quot;
+localStorage.setItem(&quot;user&quot;, JSON.stringify(user));    // stores &#x27;{&quot;name&quot;:&quot;Alice&quot;}&#x27;
+const user = JSON.parse(localStorage.getItem(&quot;user&quot;)); // back to an object
+</code></pre>
+<h2>Comparison</h2>
+<table><thead><tr>
+<th></th>
+<th>localStorage</th>
+<th>sessionStorage</th>
+</tr></thead><tbody>
+<tr>
+<td>Lifetime</td>
+<td>Until deleted</td>
+<td>Until the tab is closed</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>All tabs of the same origin</td>
+<td>One tab</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>~5–10 MB</td>
+<td>~5–10 MB</td>
+</tr>
+<tr>
+<td>Stores</td>
+<td>Strings only</td>
+<td>Strings only</td>
+</tr>
+</tbody></table>
+<hr>
+<p><a href="../Lecture%206/README.md">Lecture 6</a> | <a href="../README.md">Theory Index</a> | <a href="../Lecture%208/README.md">Lecture 8</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%206/Report.html">&larr; Previous: Sessions, Cookies &amp; State Management</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%208/Report.html">Next: Server-Side Rendering &amp; Templating &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%207">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

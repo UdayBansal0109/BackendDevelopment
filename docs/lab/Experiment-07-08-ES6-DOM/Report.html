@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6, DOM Manipulation &amp; Event Handling — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#labs">Lab Experiments</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-07-08-ES6-DOM">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>07–08 — ES6, DOM Manipulation &amp; Event Handling</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P)
+    </p>
+    <p class="meta">ES6 feature demos, DOM/event demos and an interactive To-Do list using event delegation.</p>
+  </header>
+
+  <main class="content">
+<h2>Objective</h2>
+<p>Demonstrate modern ES6 JavaScript features (Experiment 7) and DOM manipulation with event handling (Experiment 8), culminating in an interactive To-Do list.</p>
+<h2>Technologies</h2>
+<p>JavaScript (ES6+), HTML5, Node.js</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Experiment-07-08-ES6-DOM/
+├── es6-features.js     # let/const, arrow functions, template literals, destructuring,
+│                       # spread/rest, default params, classes, promises, async/await
+├── mathUtils.mjs       # ES6 module — named and default exports
+├── modules-demo.mjs    # ES6 module imports
+├── dom-events.html     # DOM and event demos (content, attributes, create/remove,
+│                       # mouse, keyboard, form submit, bubbling, stopPropagation)
+├── index.html          # Interactive To-Do list page
+├── app.js              # To-Do logic (class, spread, event delegation)
+└── output.txt          # Node.js output of the ES6 demos
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+node es6-features.js
+node modules-demo.mjs
+</code></pre>
+<p>Open <code>dom-events.html</code> and <code>index.html</code> in a browser to test the DOM and To-Do features.</p>
+<hr>
+<h2>To-Do List Features</h2>
+<table><thead><tr>
+<th>Feature</th>
+<th>Implementation</th>
+</tr></thead><tbody>
+<tr>
+<td>Add task (button click or Enter key)</td>
+<td><code>addTask()</code> using the spread operator</td>
+</tr>
+<tr>
+<td>Toggle completed state</td>
+<td>Click a task to toggle <code>classList</code> via <code>map()</code></td>
+</tr>
+<tr>
+<td>Delete a task</td>
+<td><code>filter()</code> to remove by index</td>
+</tr>
+<tr>
+<td>Single event listener for all tasks</td>
+<td>Event delegation on the <code>&lt;ul&gt;</code> with <code>closest(&quot;li&quot;)</code></td>
+</tr>
+<tr>
+<td>Progress indicator</td>
+<td>Displays &quot;1 of 2 tasks completed&quot;</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Key Concepts</h2>
+<ul>
+<li><strong><code>let</code> / <code>const</code></strong> are block-scoped; <code>const</code> prevents reassignment of the binding.</li>
+<li><strong>Event bubbling:</strong> events travel from the target element up through its parents; <code>stopPropagation()</code> halts this.</li>
+<li><strong>Event delegation:</strong> a single listener on a parent element handles events from all current and future children, reducing the number of listeners needed.</li>
+<li><strong>ES6 modules:</strong> <code>export</code> / <code>import</code> provide file-level encapsulation; Node.js uses <code>.mjs</code> extension or <code>&quot;type&quot;: &quot;module&quot;</code> in <code>package.json</code>.</li>
+<hr>
+</ul>
+<p><a href="../README.md">Lab Index</a> | <a href="../../README.md">Repository Home</a></p>
+
+<h2>Execution Screenshots</h2>
+<h3>ES6 Features Code</h3>
+<p>`es6-features.js` in VS Code — let/const, arrow functions, template literals, destructuring, spread/rest.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-07-08-ES6-DOM/screenshot/01-es6-features-code.png" alt="ES6 Features Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>ES6 Features (continued)</h3>
+<p>Continued ES6 code — classes, enhanced object literals, Promises and async/await demonstrations.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-07-08-ES6-DOM/screenshot/02-es6-features-continued.png" alt="ES6 Features (continued)" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>Todo App Code</h3>
+<p>`app.js` in VS Code — interactive todo list built with ES6 classes, event delegation and DOM manipulation.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-07-08-ES6-DOM/screenshot/03-todo-app-code.png" alt="Todo App Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>ES Modules Code</h3>
+<p>`mathUtils.mjs` in VS Code — named and default exports for the ES modules demonstration.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-07-08-ES6-DOM/screenshot/04-modules-code.png" alt="ES Modules Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>ES6 Output</h3>
+<p>`output.txt` in VS Code — console output from all ES6 feature demonstrations and module imports.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-07-08-ES6-DOM/screenshot/05-es6-output.png" alt="ES6 Output" style="max-width:100%;border-radius:8px;margin:12px 0;">
+</main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#labs">Back to Lab Experiments</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-05-JavaScript/Report.html">&larr; Previous: JavaScript Arrays, Objects &amp; Functions</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-12-Node-Express-EJS/Report.html">Next: Node.js, npm, Express, nodemon &amp; EJS &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-07-08-ES6-DOM">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

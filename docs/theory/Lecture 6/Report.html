@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sessions, Cookies &amp; State Management — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%206">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L06 — Sessions, Cookies &amp; State Management</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 1: Introduction to Backend Development</strong>
+    </p>
+    <p class="meta">Notes on stateless HTTP, cookies, sessions and JWT – practical work is Lab Experiment 12B.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 1:</strong> Introduction to Backend Development</p>
+<h2>Objective</h2>
+<p>Understand how HTTP remains stateless and how sessions, cookies and tokens let a server &quot;remember&quot; a user.</p>
+<p>This lecture has no separate lab exercise — the hands-on work is in <a href="../../lab/Experiment-12B-Sessions-Cookies/README.md">Lab Experiment 12B</a>.</p>
+<hr>
+<h2>Key Concepts</h2>
+<table><thead><tr>
+<th>Concept</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Stateless HTTP</strong></td>
+<td>Every request is independent; the server does not remember the previous one</td>
+</tr>
+<tr>
+<td><strong>Cookie</strong></td>
+<td>Small key-value data stored by the browser and sent with every request (<code>Set-Cookie</code> / <code>Cookie</code>)</td>
+</tr>
+<tr>
+<td><strong>Session</strong></td>
+<td>Data stored on the server; the browser only keeps a session id cookie</td>
+</tr>
+<tr>
+<td><strong>Token (JWT)</strong></td>
+<td>Signed data kept by the client; the server verifies it instead of storing a session</td>
+</tr>
+</tbody></table>
+<h2>Cookie Attributes</h2>
+<table><thead><tr>
+<th>Attribute</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><code>HttpOnly</code></td>
+<td>JavaScript cannot read it — protects against XSS</td>
+</tr>
+<tr>
+<td><code>Secure</code></td>
+<td>Sent only over HTTPS</td>
+</tr>
+<tr>
+<td><code>SameSite</code></td>
+<td>Limits cross-site sending — protects against CSRF</td>
+</tr>
+<tr>
+<td><code>Max-Age</code> / <code>Expires</code></td>
+<td>Lifetime; without it the cookie ends with the browser session</td>
+</tr>
+</tbody></table>
+<h2>Session vs Cookie vs JWT</h2>
+<table><thead><tr>
+<th></th>
+<th>Session</th>
+<th>Cookie (data)</th>
+<th>JWT</th>
+</tr></thead><tbody>
+<tr>
+<td>Stored on</td>
+<td>Server</td>
+<td>Browser</td>
+<td>Client</td>
+</tr>
+<tr>
+<td>Scales to many servers</td>
+<td>Needs a shared store (Redis)</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Easy logout / revoke</td>
+<td>Yes (destroy session)</td>
+<td>Yes (clear cookie)</td>
+<td>No (needs a block-list or short expiry)</td>
+</tr>
+<tr>
+<td>Typical use</td>
+<td>Login state</td>
+<td>Preferences (theme)</td>
+<td>APIs, mobile apps</td>
+</tr>
+</tbody></table>
+<hr>
+<p><a href="../Lecture%205/README.md">Lecture 5</a> | <a href="../README.md">Theory Index</a> | <a href="../Lecture%207/README.md">Lecture 7</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%205/Report.html">&larr; Previous: RESTful APIs with FastAPI</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%207/Report.html">Next: localStorage, sessionStorage &amp; JSON &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%206">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

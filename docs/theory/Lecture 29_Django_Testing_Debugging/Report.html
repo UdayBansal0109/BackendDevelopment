@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing &amp; Debugging Django — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2029_Django_Testing_Debugging">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L29 — Testing &amp; Debugging Django</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 3: Backend Frameworks</strong>
+    </p>
+    <p class="meta">19 automated tests (endpoints, models, mocked external service) and two debugging exercises.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 3:</strong> Backend Frameworks</p>
+<h2>Objective</h2>
+<p>Write automated tests for the Student Management API and use a systematic approach to find bugs.</p>
+<h2>Technologies</h2>
+<p>Django, unittest, unittest.mock</p>
+<hr>
+<h2>Files</h2>
+<pre><code>
+Lecture 29_Django_Testing_Debugging/
+├── lecture29_observation.txt   # Objective, steps and result
+└── screenshots/
+    ├── lecture29_debugging_failure.png
+    └── lecture29_test_success.png
+</code></pre>
+<p>The test code lives in <a href="../Lecture%2026_Django_Framework/students/tests.py"><code>../Lecture 26_Django_Framework/students/tests.py</code></a>.</p>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+cd &quot;../Lecture 26_Django_Framework&quot;
+uv run python manage.py test students -v 2
+</code></pre>
+<hr>
+<h2>What Was Tested</h2>
+<table><thead><tr>
+<th>Requirement</th>
+<th>Test Class</th>
+</tr></thead><tbody>
+<tr>
+<td>Health, list and detail endpoints (named URLs with <code>reverse()</code>)</td>
+<td><code>StudentEndpointTests</code></td>
+</tr>
+<tr>
+<td>404 path with status and error message</td>
+<td><code>StudentEndpointTests</code></td>
+</tr>
+<tr>
+<td>Model behaviour (<code>__str__</code>, <code>to_dict</code>, unique email)</td>
+<td><code>StudentModelTests</code></td>
+</tr>
+<tr>
+<td>External service mocked — success and timeout</td>
+<td><code>ExternalServiceTests</code> (<code>@patch(&quot;students.utils.requests.get&quot;)</code>)</td>
+</tr>
+</tbody></table>
+<h2>Debugging Exercises</h2>
+<table><thead><tr>
+<th>Defect Introduced</th>
+<th>What the Tests Showed</th>
+<th>Fix</th>
+</tr></thead><tbody>
+<tr>
+<td>Expected status changed 200 to 201</td>
+<td>Assertion failure (see screenshot)</td>
+<td>Restored the correct status</td>
+</tr>
+<tr>
+<td>URL converter <code>&lt;int:student_id&gt;</code> changed to <code>&lt;int:id&gt;</code></td>
+<td><code>NoReverseMatch</code> in tests, <code>TypeError: unexpected keyword argument &#x27;id&#x27;</code> (HTTP 500)</td>
+<td>Renamed the converter back</td>
+</tr>
+</tbody></table>
+<p>Result: <strong>19 tests OK</strong>. Test data is created inside each test, and Django uses a separate test database.</p>
+<h2>Screenshots</h2>
+<table><thead><tr>
+<th>Intentional Failure</th>
+<th>All Tests Passing</th>
+</tr></thead><tbody>
+<tr>
+<td>![](screenshots/lecture29_debugging_failure.png)</td>
+<td>![](screenshots/lecture29_test_success.png)</td>
+</tr>
+</tbody></table>
+<hr>
+<p><a href="../Lecture%2026_Django_Framework/README.md">Lecture 26</a> | <a href="../README.md">Theory Index</a> | <a href="../Lecture%2037-39_Docker_Deployment/README.md">Lecture 37-39</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2026_Django_Framework/Report.html">&larr; Previous: Django Framework (with L27–L31 features)</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Docker%20Basic%20Commands/Report.html">Next: Docker Basic Commands &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2029_Django_Testing_Debugging">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

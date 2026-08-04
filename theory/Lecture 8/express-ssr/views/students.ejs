@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <!-- Exercise 4: custom CSS served by express.static -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav><a href="/students">Students</a> | <a href="/about">About</a></nav>
+
+    <h1><%= title %></h1>
+
+    <table>
+        <thead>
+            <tr><th>ID</th><th>Name</th><th>Branch</th><th>Semester</th></tr>
+        </thead>
+        <tbody>
+            <% students.forEach(function(student, index) { %>
+                <!-- Exercise 1: alternate CSS class for every second row -->
+                <tr class="<%= index % 2 === 0 ? 'row-even' : 'row-odd' %>">
+                    <td><%= student.id %></td>
+                    <td><%= student.name %></td>
+                    <td><%= student.branch %></td>
+                    <td><%= student.semester %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <p>Total students: <%= students.length %></p>
+</body>
+</html>

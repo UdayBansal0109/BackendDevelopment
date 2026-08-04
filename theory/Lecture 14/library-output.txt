@@ -1,0 +1,32 @@
+> DROP TABLE IF EXISTS loans  -- OK (0 rows)
+> DROP TABLE IF EXISTS book_authors  -- OK (0 rows)
+> DROP TABLE IF EXISTS books  -- OK (0 rows)
+> DROP TABLE IF EXISTS authors  -- OK (0 rows)
+> DROP TABLE IF EXISTS members  -- OK (0 rows)
+> CREATE TABLE authors (  -- OK (0 rows)
+> CREATE TABLE books (  -- OK (0 rows)
+> CREATE TABLE book_authors (  -- OK (0 rows)
+> CREATE TABLE members (  -- OK (0 rows)
+> CREATE TABLE loans (  -- OK (0 rows)
+> INSERT INTO authors (name, country) VALUES  -- OK (4 rows)
+> INSERT INTO books (isbn, title, genre, published_year, total_copies) VALUES  -- OK (2 rows)
+> INSERT INTO book_authors VALUES (1, 1), (1, 2), (1, 3), (2, 4)  -- OK (4 rows)
+> INSERT INTO members (name, email, phone) VALUES  -- OK (2 rows)
+> INSERT INTO loans (book_id, member_id, loan_date, due_date) VALUES  -- OK (3 rows)
+
+> SELECT b.title, STRING_AGG(a.name, ', ' ORDER BY a.name) AS authors
+┌─────────┬────────────────────────────┬──────────────────────────────────────────────────────┐
+│ (index) │ title                      │ authors                                              │
+├─────────┼────────────────────────────┼──────────────────────────────────────────────────────┤
+│ 0       │ 'Clean Code'               │ 'Robert C. Martin'                                   │
+│ 1       │ 'Database System Concepts' │ 'Abraham Silberschatz, Henry F. Korth, S. Sudarshan' │
+└─────────┴────────────────────────────┴──────────────────────────────────────────────────────┘
+
+> SELECT m.name AS member, b.title, l.due_date
+┌─────────┬────────────────┬────────────────────────────┬──────────────┐
+│ (index) │ member         │ title                      │ due_date     │
+├─────────┼────────────────┼────────────────────────────┼──────────────┤
+│ 0       │ 'Aarav Sharma' │ 'Clean Code'               │ '2026-11-19' │
+│ 1       │ 'Aarav Sharma' │ 'Database System Concepts' │ '2026-11-15' │
+│ 2       │ 'Diya Verma'   │ 'Clean Code'               │ '2026-11-24' │
+└─────────┴────────────────┴────────────────────────────┴──────────────┘

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MongoDB + Mongoose Registration &amp; Login — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#labs">Lab Experiments</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-13A-Mongoose">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>13A — MongoDB + Mongoose Registration &amp; Login</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P)
+    </p>
+    <p class="meta">User registration, login and user list stored in MongoDB through a Mongoose schema and model.</p>
+  </header>
+
+  <main class="content">
+<h2>Objective</h2>
+<p>Build a user management system that stores users in MongoDB through a Mongoose schema and model, with registration, login and listing.</p>
+<h2>Technologies</h2>
+<p>Node.js, Express.js, MongoDB, Mongoose</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Experiment-13A-Mongoose/
+├── server.js          # Express + Mongoose app
+├── users.json         # Data file from the earlier file-based version (no longer used)
+├── test-output.txt    # Test run
+└── sceernshot/        # Screenshots
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+npm install
+node server.js                       # http://localhost:3000
+# MongoDB Atlas instead of local:
+MONGO_URL=&quot;mongodb+srv://...&quot; node server.js
+</code></pre>
+<h3>Installing MongoDB (Windows)</h3>
+<ol>
+<li>Install <strong>MongoDB Community Server</strong> (MSI, Complete, Install as a Service) and <strong>mongosh</strong>.</li>
+<li>Check: <code>Get-Service MongoDB</code> shows *Running*; <code>mongosh</code> connects to <code>127.0.0.1:27017</code>.</li>
+<li>Useful commands: <code>show dbs</code>, <code>use userdb</code>, <code>db.users.find()</code>, <code>db.users.countDocuments()</code>.</li>
+<hr>
+</ol>
+<h2>How It Works</h2>
+<table><thead><tr>
+<th>Step</th>
+<th>Code</th>
+</tr></thead><tbody>
+<tr>
+<td>Connect</td>
+<td><code>mongoose.connect(DB_URL)</code></td>
+</tr>
+<tr>
+<td>Schema</td>
+<td><code>username</code> and <code>email</code> (required, unique), <code>password</code> (required), <code>createdAt</code> (default <code>Date.now</code>)</td>
+</tr>
+<tr>
+<td>Model</td>
+<td><code>mongoose.model(&#x27;User&#x27;, userSchema)</code> creates collection <code>users</code></td>
+</tr>
+<tr>
+<td>Register</td>
+<td><code>new User({...}).save()</code> — error code <strong>11000</strong> means duplicate username or email</td>
+</tr>
+<tr>
+<td>Login</td>
+<td><code>User.findOne({ username })</code> + password check</td>
+</tr>
+<tr>
+<td>List</td>
+<td><code>User.find()</code></td>
+</tr>
+</tbody></table>
+<p>&gt; <strong>Note:</strong> Passwords are stored as plain text to keep this first Mongoose lab simple (as in the handout). Experiment 13B hashes them with bcrypt.</p>
+<h2>Test Results</h2>
+<pre><code>
+POST /signup uday        -&gt; User registered successfully!
+POST /signup duplicate   -&gt; Error: Username or email already exists
+POST /login wrong pw     -&gt; Incorrect password
+POST /login unknown      -&gt; User not found
+POST /login ok           -&gt; Login successful! Welcome back, uday
+GET  /users              -&gt; Username: uday
+</code></pre>
+<p>Full output: <a href="test-output.txt">test-output.txt</a></p>
+<h2>Screenshots</h2>
+<table><thead><tr>
+<th>Server Running</th>
+<th>First Login</th>
+<th>User Registered</th>
+<th>Login Successful</th>
+</tr></thead><tbody>
+<tr>
+<td>![](sceernshot/01-server-running.png.png)</td>
+<td>![](&lt;sceernshot/02-first login-success.png.png&gt;)</td>
+<td>![](sceernshot/03-user-registered.png.png)</td>
+<td>![](sceernshot/06-login-successfully.png.png)</td>
+</tr>
+</tbody></table>
+<hr>
+<p><a href="../README.md">Lab Index</a> | <a href="../../README.md">Repository Home</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#labs">Back to Lab Experiments</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-12B-Sessions-Cookies/Report.html">&larr; Previous: State Management: Sessions &amp; Cookies</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-13B-Mongo-Todo-JWT/Report.html">Next: Registration, JWT Login &amp; Todo API &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-13A-Mongoose">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

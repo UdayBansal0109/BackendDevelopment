@@ -1,0 +1,12 @@
+valid post accepted, default status = draft
+rejected title: Title must be at least 5 characters
+rejected slug: Slug may contain only lowercase letters, numbers and hyphens
+rejected content: Content is required
+rejected author.email: Invalid author email
+rejected status: deleted is not a valid status
+rejected likes: Likes cannot be negative
+rejected tags: A post can have at most 5 tags
+comment without post/author and too-short text rejected
+duplicate slug rejected by unique index (E11000)
+populate comments -> [ 'Great post!' ]
+All blog model tests passed (with database)

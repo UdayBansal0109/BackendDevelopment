@@ -1,0 +1,22 @@
+{
+  "name": "experiment-12-node-express-ejs",
+  "version": "1.0.0",
+  "description": "Experiment 12A - Node.js, npm, Express, nodemon and EJS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "script": "node script.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

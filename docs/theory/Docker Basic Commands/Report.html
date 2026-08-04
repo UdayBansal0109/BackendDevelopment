@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docker Basic Commands — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Docker%20Basic%20Commands">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>Docker — Docker Basic Commands</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 4: Deployment, CI/CD and Scaling</strong>
+    </p>
+    <p class="meta">Running nginx, building a custom image from a Dockerfile, and exporting / restoring images.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 4:</strong> Deployment, CI/CD and Scaling</p>
+<h2>Objective</h2>
+<p>First steps with Docker: running containers, writing a Dockerfile and moving images between machines.</p>
+<h2>Technologies</h2>
+<p>Docker, nginx, Ubuntu</p>
+<hr>
+<h2>Steps Performed</h2>
+<table><thead><tr>
+<th>#</th>
+<th>Step</th>
+<th>Example Command</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Run an nginx container and open it in the browser</td>
+<td><code>docker run -d -p 8080:80 nginx</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Serve a custom HTML page</td>
+<td>Create <code>index.html</code>, copy it into the container</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Write a Dockerfile</td>
+<td><code>FROM nginx</code> + <code>COPY index.html /usr/share/nginx/html/</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Build and run the custom image</td>
+<td><code>docker build -t my-custom-nginx:v1 .</code> then <code>docker run</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Export the image to a file</td>
+<td><code>docker save -o my-custom-nginx.tar my-custom-nginx:v1</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Restore the image and run it again</td>
+<td><code>docker load -i my-custom-nginx.tar</code></td>
+</tr>
+</tbody></table>
+<h2>Screenshots</h2>
+<table><thead><tr>
+<th>nginx Output</th>
+<th>Custom HTML File</th>
+</tr></thead><tbody>
+<tr>
+<td>![](screenshots/01_docker_nginx_output.png.png)</td>
+<td>![](screenshots/02_docker_html_file.png.png)</td>
+</tr>
+<tr>
+<td><strong>Dockerfile Created</strong></td>
+<td><strong>Custom Image Output</strong></td>
+</tr>
+<tr>
+<td>![](screenshots/03_dockerfile_created.png.png)</td>
+<td>![](screenshots/04_docker_custom_image_output.png.png)</td>
+</tr>
+<tr>
+<td><strong>Image Export</strong></td>
+<td><strong>Image Restore</strong></td>
+</tr>
+<tr>
+<td>![](screenshots/05_docker_image_export.png.png)</td>
+<td>![](screenshots/06_docker_image_restore_output.png.png)</td>
+</tr>
+</tbody></table>
+<h2>Command Cheat Sheet</h2>
+<table><thead><tr>
+<th>Command</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><code>docker ps</code> / <code>docker ps -a</code></td>
+<td>Running / all containers</td>
+</tr>
+<tr>
+<td><code>docker images</code></td>
+<td>Local images</td>
+</tr>
+<tr>
+<td><code>docker logs &lt;name&gt;</code></td>
+<td>Container output</td>
+</tr>
+<tr>
+<td><code>docker exec -it &lt;name&gt; sh</code></td>
+<td>Shell inside a running container</td>
+</tr>
+<tr>
+<td><code>docker start -ai &lt;name&gt;</code></td>
+<td>Re-attach to a stopped container</td>
+</tr>
+<tr>
+<td><code>docker commit &lt;name&gt; &lt;image&gt;</code></td>
+<td>Save container changes as a new image</td>
+</tr>
+<tr>
+<td><code>docker stop</code> / <code>docker rm</code> / <code>docker rmi</code></td>
+<td>Stop / remove container / remove image</td>
+</tr>
+<tr>
+<td><code>docker save</code> / <code>docker load</code></td>
+<td>Export / import an image as a <code>.tar</code> file</td>
+</tr>
+</tbody></table>
+<hr>
+<p><a href="../README.md">Theory Index</a> | <a href="../Lecture%2037-39_Docker_Deployment/README.md">Lectures 37-39</a> | <a href="../../README.md">Repository Home</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2029_Django_Testing_Debugging/Report.html">&larr; Previous: Testing &amp; Debugging Django</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Express.js%20Task/Report.html">Next: Express.js Task – Containerized App &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Docker%20Basic%20Commands">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PostgreSQL as SQL + NoSQL with JSONB — Backend Development Report</title>
+  <link rel="stylesheet" href="../../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../../index.html">Backend Development</a>
+    <div>
+      <a href="../../../index.html">Home</a>
+      <a href="../../../index.html#assignments">Assignments</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Assignment/Assignment%202">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>II — PostgreSQL as SQL + NoSQL with JSONB</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P)
+    </p>
+    <p class="meta">JSONB vs JSON, operators, GIN index with EXPLAIN, and a product catalog compared with MongoDB.</p>
+  </header>
+
+  <main class="content">
+<h2>Overview</h2>
+<p>This assignment explores how PostgreSQL&#x27;s <code>jsonb</code> data type allows a single relational database to handle both structured (SQL) and flexible (NoSQL) data. It includes five conceptual questions (Part A) and a hands-on product catalog exercise with seven tasks (Part B), ending with a MongoDB comparison.</p>
+<table><thead><tr>
+<th></th>
+<th></th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Source</strong></td>
+<td>Theory Assignment 2 — Part A (5 conceptual questions, 150-250 words each) and Part B (7 practical tasks)</td>
+</tr>
+<tr>
+<td><strong>Submission</strong></td>
+<td><a href="&lt;Assignment 2 PostgreSQL as SQL and NoSQL with JSONB.md&gt;">Assignment 2 PostgreSQL as SQL and NoSQL with JSONB.md</a></td>
+</tr>
+<tr>
+<td><strong>Execution</strong></td>
+<td>SQL ran on PGlite 0.6 (PostgreSQL 19 compiled to WebAssembly); MongoDB script ran against a local test server</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Assignment 2/
+├── Assignment 2 PostgreSQL as SQL and NoSQL with JSONB.md   # Full submission (Part A + Part B)
+├── products_jsonb.sql      # PostgreSQL script: schema, inserts, queries, GIN index, EXPLAIN ANALYZE
+├── postgres-output.txt     # Actual PostgreSQL execution output
+├── products_mongo.js       # MongoDB equivalent (mongosh script)
+├── mongo-output.txt        # Actual MongoDB execution output
+├── README.md
+└── screenshot/
+    ├── assignment-2-sql-file.png
+    ├── assignment-2-postgres-products.png
+    ├── assignment-2-postgres-queries.png
+    ├── assignment-2-postgres-explain.png
+    └── assignment-2-mongodb-output.png
+</code></pre>
+<hr>
+<h2>Part A — Conceptual Questions</h2>
+<table><thead><tr>
+<th>Question</th>
+<th>Topic</th>
+<th>Key Points</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td><code>json</code> vs <code>jsonb</code></td>
+<td><code>json</code> stores exact text (re-parses every read); <code>jsonb</code> stores binary (parse once at write, faster reads, supports indexes)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SQL + NoSQL in one table</td>
+<td>Fixed typed columns (id, name, price) + one <code>jsonb</code> column for flexible per-row attributes</td>
+</tr>
+<tr>
+<td>3</td>
+<td>JSONB operators</td>
+<td><code>-&gt;</code> returns jsonb, <code>-&gt;&gt;</code> returns text, <code>@&gt;</code> containment check, <code>?</code> key existence</td>
+</tr>
+<tr>
+<td>4</td>
+<td>GIN index impact</td>
+<td>Speeds up <code>@&gt;</code> and <code>?</code> queries; does not help <code>-&gt;&gt;</code> range comparisons (needs expression index)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>PostgreSQL vs MongoDB</td>
+<td>PostgreSQL: full ACID, native joins, schema enforcement; MongoDB: built-in sharding, flexible schema, natural JSON</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Part B — Hands-on Tasks</h2>
+<h3>Product Catalog Schema</h3>
+<p>The <code>products</code> table combines strict relational columns with a flexible JSONB column:</p>
+<pre><code class="language-sql">
+CREATE TABLE products (
+    id         INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name       VARCHAR(100) NOT NULL,
+    category   VARCHAR(50)  NOT NULL,
+    price      NUMERIC(10,2) NOT NULL,
+    attributes JSONB
+);
+</code></pre>
+<h3>Sample Data (5 products, 3 categories)</h3>
+<table><thead><tr>
+<th>Product</th>
+<th>Category</th>
+<th>Price</th>
+<th>Attributes</th>
+</tr></thead><tbody>
+<tr>
+<td>Clean Code</td>
+<td>book</td>
+<td>499.00</td>
+<td><code>{&quot;author&quot;: &quot;Robert C. Martin&quot;, &quot;pages&quot;: 464}</code></td>
+</tr>
+<tr>
+<td>The Pragmatic Programmer</td>
+<td>book</td>
+<td>650.00</td>
+<td><code>{&quot;author&quot;: &quot;Andrew Hunt&quot;, &quot;pages&quot;: 352, &quot;edition&quot;: 2}</code></td>
+</tr>
+<tr>
+<td>ThinkPad E14</td>
+<td>laptop</td>
+<td>62,000.00</td>
+<td><code>{&quot;ram_gb&quot;: 16, &quot;cpu&quot;: &quot;Intel i5-1335U&quot;, &quot;storage_gb&quot;: 512}</code></td>
+</tr>
+<tr>
+<td>IdeaPad Slim 3</td>
+<td>laptop</td>
+<td>45,000.00</td>
+<td><code>{&quot;ram_gb&quot;: 8, &quot;cpu&quot;: &quot;AMD Ryzen 5 7520U&quot;, &quot;storage_gb&quot;: 512}</code></td>
+</tr>
+<tr>
+<td>Wireless Mouse</td>
+<td>accessory</td>
+<td>799.00</td>
+<td><code>{&quot;color&quot;: &quot;black&quot;, &quot;wireless&quot;: true, &quot;dpi&quot;: 1600}</code></td>
+</tr>
+</tbody></table>
+<h3>Tasks Summary</h3>
+<table><thead><tr>
+<th>Task</th>
+<th>Description</th>
+<th>Key SQL</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Create the products table</td>
+<td><code>CREATE TABLE products (...)</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Insert 5 products across 3 categories</td>
+<td><code>INSERT INTO products ...</code> with different JSONB keys per category</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Per-category attribute queries</td>
+<td>Books &gt;400 pages, laptops &gt;=16 GB RAM, black accessories</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Containment query</td>
+<td><code>WHERE attributes @&gt; &#x27;{&quot;wireless&quot;: true}&#x27;</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Add attribute without ALTER TABLE</td>
+<td>`attributes \</td>
+<td>\</td>
+<td>&#x27;{&quot;discount_pct&quot;: 10}&#x27;`</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GIN index + EXPLAIN ANALYZE</td>
+<td>Seq Scan before index, Bitmap Index Scan after</td>
+</tr>
+<tr>
+<td>7</td>
+<td>MongoDB comparison</td>
+<td>Same queries in mongosh, compared syntax and indexing</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Screenshots</h2>
+<h3>SQL File</h3>
+<p>The <code>products_jsonb.sql</code> script with syntax-highlighted schema creation, inserts and JSONB queries.</p>
+<div class="info-box"><p>Screenshot: SQL file</p></div>
+<h3>PostgreSQL Output — Products Table and Queries</h3>
+<p>Table creation, all 5 products displayed, then per-category JSONB queries returning correct results.</p>
+<div class="info-box"><p>Screenshot: PostgreSQL products and queries</p></div>
+<h3>PostgreSQL Output — JSONB Operator Queries</h3>
+<p>Results of <code>-&gt;&gt;</code>, <code>@&gt;</code>, <code>?</code> operators and the <code>||</code> merge update.</p>
+<div class="info-box"><p>Screenshot: PostgreSQL JSONB queries</p></div>
+<h3>EXPLAIN ANALYZE — Before and After GIN Index</h3>
+<p>The key comparison:</p>
+<ul>
+<li><strong>Before index:</strong> <code>Seq Scan on products</code> (0.257 ms)</li>
+<li><strong>After GIN index:</strong> <code>Bitmap Index Scan on idx_products_attributes</code> (uses the index)</li>
+<li><strong>Range query (<code>-&gt;&gt;</code> with cast):</strong> Still <code>Seq Scan</code> (GIN cannot serve cast/range queries)</li>
+</ul>
+<div class="info-box"><p>Screenshot: EXPLAIN ANALYZE comparison</p></div>
+<p>&gt; <strong>Note:</strong> With only 5 rows, PostgreSQL&#x27;s query planner correctly prefers a sequential scan even when the index exists. <code>SET enable_seqscan = off</code> was used only to demonstrate that the GIN index is usable. The real performance benefit appears on larger tables.</p>
+<h3>MongoDB Output</h3>
+<p>The same product catalog in MongoDB (mongosh), showing equivalent queries with dot-notation syntax and direct type comparisons.</p>
+<div class="info-box"><p>Screenshot: MongoDB output</p></div>
+<hr>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+# PostgreSQL (requires a running PostgreSQL server or PGlite)
+psql -U postgres -d &lt;database&gt; -f products_jsonb.sql
+
+# MongoDB (requires mongosh connected to a MongoDB instance)
+mongosh --file products_mongo.js
+</code></pre>
+<hr>
+<h2>Key Differences: PostgreSQL JSONB vs MongoDB</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>PostgreSQL JSONB</th>
+<th>MongoDB</th>
+</tr></thead><tbody>
+<tr>
+<td>Syntax</td>
+<td>Operators <code>-&gt;</code>, <code>-&gt;&gt;</code>, <code>@&gt;</code> with casts (<code>::int</code>)</td>
+<td>Dot notation, values keep their type</td>
+</tr>
+<tr>
+<td>Numeric comparison</td>
+<td><code>(attributes -&gt;&gt; &#x27;ram_gb&#x27;)::int &gt;= 16</code></td>
+<td><code>{ &quot;attributes.ram_gb&quot;: { $gte: 16 } }</code></td>
+</tr>
+<tr>
+<td>Indexing</td>
+<td>One GIN index covers all keys for <code>@&gt;</code>/<code>?</code>; range queries need expression indexes</td>
+<td>One B-tree index per field path; range queries use it directly</td>
+</tr>
+<tr>
+<td>Updates</td>
+<td>`attributes \</td>
+<td>\</td>
+<td>&#x27;{...}&#x27;<code> or </code>jsonb_set()`</td>
+<td><code>$set</code> on a dotted path</td>
+</tr>
+<tr>
+<td>Joins</td>
+<td>Native SQL joins with other tables</td>
+<td><code>$lookup</code> (slower, limited)</td>
+</tr>
+<tr>
+<td>Transactions</td>
+<td>Full ACID across tables</td>
+<td>Multi-document transactions exist but add overhead</td>
+</tr>
+</tbody></table>
+<p><strong>Conclusion:</strong> For this catalog both work. MongoDB queries are shorter to write, but PostgreSQL keeps <code>price</code> as a validated numeric column and can join products with orders in the same database — which is why PostgreSQL + JSONB is a good choice for mostly-relational applications with some flexible data.</p>
+<hr>
+<p><a href="../README.md">Assignments Index</a> | <a href="../../README.md">Theory Index</a> | <a href="../../../README.md">Repository Home</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../../index.html">Back to Home</a>
+    <a href="../../../index.html#assignments">Back to Assignments</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Assignment/Assignment%201/Report.html">&larr; Previous: Notes App with localStorage</a>
+    
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Assignment/Assignment%202">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setting Up the Backend Environment — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%203">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L03 — Setting Up the Backend Environment</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 1: Introduction to Backend Development</strong>
+    </p>
+    <p class="meta">The same Student API built with Express (routes, JSON, HTML, EJS) and Flask, plus a branch filter and POST route.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 1:</strong> Introduction to Backend Development</p>
+<h2>Objective</h2>
+<p>Build the same small Student API twice — with Express and with Flask — from &quot;Hello World&quot; to JSON and templates.</p>
+<h2>Technologies</h2>
+<p>Node.js, Express.js, EJS, Python, Flask</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Lecture 3/
+├── express-demo/
+│   ├── server.js          # Tasks 1–5 + /students/branch/:branch
+│   └── views/             # home.ejs, students.ejs
+├── flask-demo/
+│   ├── app.py             # Tasks 6–7 + POST /students
+│   └── requirements.txt
+└── test-output.txt        # curl results for both servers
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+# Express
+cd express-demo
+npm install
+node server.js                   # http://localhost:3000
+
+# Flask
+cd flask-demo
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python app.py                    # http://localhost:5000
+</code></pre>
+<hr>
+<h2>Hands-on Tasks</h2>
+<table><thead><tr>
+<th>#</th>
+<th>Task</th>
+<th>Implementation</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Hello world server</td>
+<td><code>express-demo/server.js</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Multiple routes</td>
+<td><code>/</code>, <code>/students</code>, <code>/students/:id</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Returning JSON</td>
+<td><code>GET /students</code>, <code>GET /students/:id</code> (404 JSON error)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>HTML responses</td>
+<td><code>GET /html/students</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>EJS templating</td>
+<td><code>GET /view/students</code> with <code>views/students.ejs</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Flask hello world</td>
+<td><code>flask-demo/app.py</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Flask routes + JSON</td>
+<td><code>/students</code>, <code>/students/&lt;int:id&gt;</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Browser DevTools</td>
+<td>Network tab: request method, status, headers, body</td>
+</tr>
+</tbody></table>
+<h2>Lab Exercise</h2>
+<table><thead><tr>
+<th>#</th>
+<th>Requirement</th>
+<th>Result</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Install Node.js, npm, Python, venv, VS Code</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Complete all eight tasks</td>
+<td>Done</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>GET /students/branch/:branch</code></td>
+<td><code>/students/branch/CSE</code> returns Aarav, Kabir; unknown branch returns 404</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Flask <code>POST /students</code></td>
+<td>201 with the new student; 400 if fields are missing</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DevTools screenshot of one API call</td>
+<td>Open <code>http://localhost:3000/students</code>, F12, Network</td>
+</tr>
+</tbody></table>
+<p>All routes tested with curl: <a href="test-output.txt">test-output.txt</a></p>
+<h2>Key Concept</h2>
+<p><code>/students/branch/:branch</code> is declared before <code>/students/:id</code> because Express matches routes in order — otherwise <code>branch</code> would be treated as an id.</p>
+<hr>
+<p><a href="../README.md">Theory Index</a> | <a href="../Lecture%204/README.md">Lecture 4</a> | <a href="../../README.md">Repository Home</a></p>
+
+<h2>Execution Screenshots</h2>
+<h3>Express Server Code</h3>
+<p>Express `server.js` open in VS Code — route definitions for JSON API, HTML responses, and EJS template rendering.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 3/screenshot/01-express-server-code.png" alt="Express Server Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>Express Routes (continued)</h3>
+<p>More Express routes: branch filter, 404 handling, and `app.listen()` on port 3000.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 3/screenshot/02-express-routes-code.png" alt="Express Routes (continued)" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>Flask Application Code</h3>
+<p>Flask `app.py` open in VS Code — equivalent REST endpoints with `@app.route` decorators.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 3/screenshot/03-flask-app-code.png" alt="Flask Application Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>Test Output</h3>
+<p>Test results from `test-output.txt` showing curl responses from both Express and Flask servers.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 3/screenshot/04-test-output.png" alt="Test Output" style="max-width:100%;border-radius:8px;margin:12px 0;">
+</main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%204/Report.html">Next: HTTP Requests, DevTools, curl, Postman &amp; fetch &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%203">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

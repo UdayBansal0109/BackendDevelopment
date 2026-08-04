@@ -1,0 +1,94 @@
+--- Books with more than 400 pages ---
+[
+ {
+  "_id": "6b0675e1dc9adc5f2e6042e9",
+  "name": "Clean Code",
+  "category": "book",
+  "price": 499,
+  "attributes": {
+   "author": "Robert C. Martin",
+   "pages": 464
+  }
+ }
+]
+--- Laptops with at least 16 GB RAM ---
+[
+ {
+  "_id": "6b0675e1dc9adc5f2e6042eb",
+  "name": "ThinkPad E14",
+  "category": "laptop",
+  "price": 62000,
+  "attributes": {
+   "ram_gb": 16,
+   "cpu": "Intel i5-1335U",
+   "storage_gb": 512
+  }
+ }
+]
+--- Black accessories ---
+[
+ {
+  "_id": "6b0675e1dc9adc5f2e6042ed",
+  "name": "Wireless Mouse",
+  "category": "accessory",
+  "price": 799,
+  "attributes": {
+   "color": "black",
+   "wireless": true,
+   "dpi": 1600
+  }
+ }
+]
+--- Containment (wireless: true) ---
+[
+ {
+  "_id": "6b0675e1dc9adc5f2e6042ed",
+  "name": "Wireless Mouse",
+  "category": "accessory",
+  "price": 799,
+  "attributes": {
+   "color": "black",
+   "wireless": true,
+   "dpi": 1600
+  }
+ }
+]
+--- Add a new attribute (no schema change) ---
+{
+ "_id": "6b0675e1dc9adc5f2e6042ed",
+ "name": "Wireless Mouse",
+ "category": "accessory",
+ "price": 799,
+ "attributes": {
+  "color": "black",
+  "wireless": true,
+  "dpi": 1600,
+  "discount_pct": 10
+ }
+}
+--- Index on a nested field ---
+{
+ "isCached": false,
+ "stage": "FETCH",
+ "inputStage": {
+  "stage": "IXSCAN",
+  "keyPattern": {
+   "attributes.ram_gb": 1
+  },
+  "indexName": "attributes.ram_gb_1",
+  "isMultiKey": false,
+  "multiKeyPaths": {
+   "attributes.ram_gb": []
+  },
+  "isUnique": false,
+  "isSparse": false,
+  "isPartial": false,
+  "indexVersion": 2,
+  "direction": "forward",
+  "indexBounds": {
+   "attributes.ram_gb": [
+    "[16, inf]"
+   ]
+  }
+ }
+}

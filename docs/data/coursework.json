@@ -1,0 +1,394 @@
+{
+  "course": {
+    "title": "Backend Development",
+    "subtitle": "Coursework, Theory Lectures & Laboratory Experiments",
+    "code": "CSFS3008P",
+    "university": "UPES, Dehradun · School of Computer Science",
+    "program": "B.Tech CSE · Semester 5",
+    "faculty": "Prateek Raj Gautam",
+    "student": "Uday Bansal",
+    "sapId": "590013278",
+    "repository": "https://github.com/UdayBansal0109/BackendDevelopment",
+    "courseMaterial": "https://upessocs.github.io/#d=/Lectures/Backend%20Development/&f=list.txt"
+  },
+  "units": [
+    {
+      "id": "unit-1",
+      "number": 1,
+      "name": "Introduction to Backend Development",
+      "items": [
+        {
+          "code": "L03",
+          "title": "Setting Up the Backend Environment",
+          "desc": "The same Student API built with Express (routes, JSON, HTML, EJS) and Flask, plus a branch filter and POST route.",
+          "tags": [
+            "Express",
+            "EJS",
+            "Flask"
+          ],
+          "path": "theory/Lecture 3",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%203",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%203/Report.html"
+        },
+        {
+          "code": "L04",
+          "title": "HTTP Requests, DevTools, curl, Postman & fetch",
+          "desc": "Inspecting requests with curl -v, a Postman collection and a fetch() script that filters CSE students.",
+          "tags": [
+            "HTTP",
+            "curl",
+            "Postman"
+          ],
+          "path": "theory/Lecture 4",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%204",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%204/Report.html"
+        },
+        {
+          "code": "L05",
+          "title": "RESTful APIs with FastAPI",
+          "desc": "Full CRUD for a Course resource with a department filter, Swagger UI and ReDoc, tested with pytest.",
+          "tags": [
+            "FastAPI",
+            "Swagger",
+            "pytest"
+          ],
+          "path": "theory/Lecture 5",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%205",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%205/Report.html"
+        },
+        {
+          "code": "L06",
+          "title": "Sessions, Cookies & State Management",
+          "desc": "Notes on stateless HTTP, cookies, sessions and JWT – practical work is Lab Experiment 12B.",
+          "tags": [
+            "Sessions",
+            "Cookies"
+          ],
+          "path": "theory/Lecture 6",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%206",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%206/Report.html"
+        },
+        {
+          "code": "L07",
+          "title": "localStorage, sessionStorage & JSON",
+          "desc": "Web Storage exercises and the JSON stringify/parse problem; the final task is Assignment I.",
+          "tags": [
+            "JavaScript",
+            "Web Storage"
+          ],
+          "path": "theory/Lecture 7",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%207",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%207/Report.html"
+        },
+        {
+          "code": "L08",
+          "title": "Server-Side Rendering & Templating",
+          "desc": "EJS table with alternating rows, an About page and custom CSS; FastAPI + Jinja2 date page and static image.",
+          "tags": [
+            "EJS",
+            "Jinja2",
+            "FastAPI"
+          ],
+          "path": "theory/Lecture 8",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%208",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%208/Report.html"
+        }
+      ]
+    },
+    {
+      "id": "unit-2",
+      "number": 2,
+      "name": "Databases and RESTful APIs",
+      "items": [
+        {
+          "code": "L13",
+          "title": "Introduction to Databases",
+          "desc": "Relational vs document databases – the same queries in PostgreSQL and MongoDB.",
+          "tags": [
+            "PostgreSQL",
+            "MongoDB"
+          ],
+          "path": "theory/Lecture 13",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2013",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2013/Report.html"
+        },
+        {
+          "code": "L14",
+          "title": "Schema Design & Normalization",
+          "desc": "Library Management ER diagram and schema, and an order table normalized step by step to 3NF.",
+          "tags": [
+            "SQL",
+            "ER diagram",
+            "3NF"
+          ],
+          "path": "theory/Lecture 14",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2014",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2014/Report.html"
+        },
+        {
+          "code": "L15",
+          "title": "Data Modeling",
+          "desc": "E-commerce conceptual model, SQLAlchemy models with cascade delete, and validated Mongoose blog schemas.",
+          "tags": [
+            "SQLAlchemy",
+            "Mongoose"
+          ],
+          "path": "theory/Lecture 15",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2015",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2015/Report.html"
+        },
+        {
+          "code": "L19",
+          "title": "Implementing RESTful APIs",
+          "desc": "Student Management API with CRUD, filters, pagination, courses, nested enrollments and 404/409/422 errors.",
+          "tags": [
+            "FastAPI",
+            "SQLAlchemy",
+            "SQLite"
+          ],
+          "path": "theory/Lecture 19_RESTful_APIs",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2019_RESTful_APIs",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2019_RESTful_APIs/Report.html"
+        }
+      ]
+    },
+    {
+      "id": "unit-3",
+      "number": 3,
+      "name": "Backend Frameworks",
+      "items": [
+        {
+          "code": "L25",
+          "title": "Introduction to Express.js",
+          "desc": "Project setup for the Student Management System – app.js answering “API is running”.",
+          "tags": [
+            "Express",
+            "nodemon"
+          ],
+          "path": "theory/Lecture 25_Express",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2025_Express",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2025_Express/Report.html"
+        },
+        {
+          "code": "L26",
+          "title": "Django Framework (with L27–L31 features)",
+          "desc": "Django Student API extended with logging middleware, a third-party API, auth & permissions, and caching.",
+          "tags": [
+            "Django",
+            "Middleware",
+            "Caching"
+          ],
+          "path": "theory/Lecture 26_Django_Framework",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2026_Django_Framework",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2026_Django_Framework/Report.html"
+        },
+        {
+          "code": "L29",
+          "title": "Testing & Debugging Django",
+          "desc": "19 automated tests (endpoints, models, mocked external service) and two debugging exercises.",
+          "tags": [
+            "Django",
+            "unittest"
+          ],
+          "path": "theory/Lecture 29_Django_Testing_Debugging",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2029_Django_Testing_Debugging",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2029_Django_Testing_Debugging/Report.html"
+        }
+      ]
+    },
+    {
+      "id": "unit-4",
+      "number": 4,
+      "name": "Deployment, CI/CD and Scaling",
+      "items": [
+        {
+          "code": "Docker",
+          "title": "Docker Basic Commands",
+          "desc": "Running nginx, building a custom image from a Dockerfile, and exporting / restoring images.",
+          "tags": [
+            "Docker",
+            "nginx"
+          ],
+          "path": "theory/Docker Basic Commands",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Docker%20Basic%20Commands",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Docker%20Basic%20Commands/Report.html"
+        },
+        {
+          "code": "Task",
+          "title": "Express.js Task – Containerized App",
+          "desc": "An Express API tested locally, packaged into a Docker image on Ubuntu and run as a container.",
+          "tags": [
+            "Express",
+            "Docker"
+          ],
+          "path": "theory/Express.js Task",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Express.js%20Task",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Express.js%20Task/Report.html"
+        },
+        {
+          "code": "L37–39",
+          "title": "Deployment & Containerization",
+          "desc": "The same Student API contract in FastAPI and Express, built as two images and run on separate ports.",
+          "tags": [
+            "Docker",
+            "FastAPI",
+            "Express"
+          ],
+          "path": "theory/Lecture 37-39_Docker_Deployment",
+          "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2037-39_Docker_Deployment",
+          "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2037-39_Docker_Deployment/Report.html"
+        }
+      ]
+    }
+  ],
+  "labs": [
+    {
+      "code": "01",
+      "title": "Web Page with All Elements of HTML5",
+      "desc": "Semantic layout, registration form, comparison table, multimedia gallery and interactive elements.",
+      "tags": [
+        "HTML5",
+        "CSS"
+      ],
+      "path": "lab/Experiment-01-HTML5",
+      "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-01-HTML5",
+      "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-01-HTML5/Report.html"
+    },
+    {
+      "code": "05",
+      "title": "JavaScript Arrays, Objects & Functions",
+      "desc": "Core JavaScript programs run in the browser and Node.js, plus a library book manager (PBL).",
+      "tags": [
+        "JavaScript",
+        "Node.js"
+      ],
+      "path": "lab/Experiment-05-JavaScript",
+      "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-05-JavaScript",
+      "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-05-JavaScript/Report.html"
+    },
+    {
+      "code": "07–08",
+      "title": "ES6, DOM Manipulation & Event Handling",
+      "desc": "ES6 feature demos, DOM/event demos and an interactive To-Do list using event delegation.",
+      "tags": [
+        "ES6",
+        "DOM"
+      ],
+      "path": "lab/Experiment-07-08-ES6-DOM",
+      "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-07-08-ES6-DOM",
+      "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-07-08-ES6-DOM/Report.html"
+    },
+    {
+      "code": "12A",
+      "title": "Node.js, npm, Express, nodemon & EJS",
+      "desc": "Routes, parameters, a calculator API, student routes, an EJS timetable and a registration form.",
+      "tags": [
+        "Express",
+        "EJS"
+      ],
+      "path": "lab/Experiment-12-Node-Express-EJS",
+      "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-12-Node-Express-EJS",
+      "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-12-Node-Express-EJS/Report.html"
+    },
+    {
+      "code": "12B",
+      "title": "State Management: Sessions & Cookies",
+      "desc": "Session login/logout and cookies, a protected dashboard with bcrypt, and a per-session to-do list.",
+      "tags": [
+        "Express",
+        "Sessions"
+      ],
+      "path": "lab/Experiment-12B-Sessions-Cookies",
+      "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-12B-Sessions-Cookies",
+      "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-12B-Sessions-Cookies/Report.html"
+    },
+    {
+      "code": "13A",
+      "title": "MongoDB + Mongoose Registration & Login",
+      "desc": "User registration, login and user list stored in MongoDB through a Mongoose schema and model.",
+      "tags": [
+        "MongoDB",
+        "Mongoose"
+      ],
+      "path": "lab/Experiment-13A-Mongoose",
+      "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-13A-Mongoose",
+      "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-13A-Mongoose/Report.html"
+    },
+    {
+      "code": "13B",
+      "title": "Registration, JWT Login & Todo API",
+      "desc": "REST API with hashed passwords, JWT authentication middleware and per-user todo CRUD.",
+      "tags": [
+        "MongoDB",
+        "JWT"
+      ],
+      "path": "lab/Experiment-13B-Mongo-Todo-JWT",
+      "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-13B-Mongo-Todo-JWT",
+      "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-13B-Mongo-Todo-JWT/Report.html"
+    },
+    {
+      "code": "15",
+      "title": "Django To-Do App (Task Tracker)",
+      "desc": "Template inheritance, static files, CSRF-safe actions, Django Admin and 14 automated tests.",
+      "tags": [
+        "Django",
+        "SQLite"
+      ],
+      "path": "lab/Experiment-15-Django-ToDo",
+      "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-15-Django-ToDo",
+      "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-15-Django-ToDo/Report.html"
+    },
+    {
+      "code": "Mid-Sem",
+      "title": "MyNotes – Mid-Semester Lab Exam (Set A)",
+      "desc": "Notes application that adds, lists and deletes notes stored in MongoDB, rendered with EJS.",
+      "tags": [
+        "Express",
+        "EJS",
+        "MongoDB"
+      ],
+      "path": "lab/MyNotes",
+      "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/MyNotes",
+      "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/lab/MyNotes/Report.html"
+    }
+  ],
+  "assignments": [
+    {
+      "code": "I",
+      "title": "Notes App with localStorage",
+      "desc": "Add, edit, delete, complete, search, import/export and dark mode – all stored in the browser.",
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "path": "theory/Assignment/Assignment 1",
+      "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Assignment/Assignment%201",
+      "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Assignment/Assignment%201/Report.html"
+    },
+    {
+      "code": "II",
+      "title": "PostgreSQL as SQL + NoSQL with JSONB",
+      "desc": "JSONB vs JSON, operators, GIN index with EXPLAIN, and a product catalog compared with MongoDB.",
+      "tags": [
+        "PostgreSQL",
+        "MongoDB"
+      ],
+      "path": "theory/Assignment/Assignment 2",
+      "viewUrl": "https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Assignment/Assignment%202",
+      "readmeUrl": "https://udaybansal0109.github.io/BackendDevelopment/theory/Assignment/Assignment%202/Report.html"
+    }
+  ],
+  "pbl": {
+    "title": "Student Management API – Docker to CI/CD",
+    "desc": "FastAPI + SQLite API containerized with Docker, run with docker compose, tested by automationTesting.py, and built and pushed to Docker Hub by GitHub Actions.",
+    "tags": [
+      "FastAPI",
+      "Docker",
+      "docker compose",
+      "GitHub Actions"
+    ],
+    "repoUrl": "https://github.com/UdayBansal0109/Backend-PBL",
+    "readmeUrl": "https://github.com/UdayBansal0109/Backend-PBL/blob/main/README.md"
+  }
+}

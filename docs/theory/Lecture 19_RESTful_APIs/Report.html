@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Implementing RESTful APIs — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2019_RESTful_APIs">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L19 — Implementing RESTful APIs</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 2: Databases and RESTful APIs</strong>
+    </p>
+    <p class="meta">Student Management API with CRUD, filters, pagination, courses, nested enrollments and 404/409/422 errors.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 2:</strong> Databases and RESTful APIs</p>
+<h2>Objective</h2>
+<p>Build a full CRUD API with filtering, pagination, courses and nested enrollments using FastAPI and SQLAlchemy.</p>
+<h2>Technologies</h2>
+<p>Python, FastAPI, SQLAlchemy, SQLite, Postman</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Lecture 19_RESTful_APIs/
+├── database.py        # engine, SessionLocal, get_db()
+├── models.py          # Department, Student, Course, Enrollment
+├── schemas.py         # Pydantic request / response models
+├── main.py            # All endpoints
+├── test_main.py       # 8 tests (in-memory database)
+├── Student-API.postman_collection.json
+├── curl-demo.txt      # Example requests and responses
+└── screenshots/swagger-ui.png
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt -r requirements-dev.txt
+uvicorn main:app --reload      # creates students.db (ignored by Git)
+pytest -v
+</code></pre>
+<hr>
+<h2>Lab Exercise</h2>
+<table><thead><tr>
+<th>#</th>
+<th>Requirement</th>
+<th>Implementation</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Complete student CRUD</td>
+<td>GET, GET /{id}, POST, PUT, PATCH, DELETE</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Filtering</td>
+<td><code>?branch=CSE</code>, <code>?department_id=1</code>, <code>?search=</code> (name or email)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pagination metadata</td>
+<td><code>data, total, page, limit, total_pages</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>POST /courses</code> + Postman</td>
+<td>Endpoint + <code>Student-API.postman_collection.json</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Nested enrollments</td>
+<td><code>GET/POST /students/{id}/enrollments</code>, <code>DELETE .../enrollments/{course_id}</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Error handling</td>
+<td>404 missing, 409 duplicate, 422 invalid data</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Swagger UI docs</td>
+<td>Endpoints grouped by tags</td>
+</tr>
+</tbody></table>
+<h2>Data Model</h2>
+<pre><code>
+Department 1 --&lt; Student 1 --&lt; Enrollment &gt;-- 1 Course &gt;-- 1 Department
+</code></pre>
+<p>Deleting a student also deletes their enrollments (<code>cascade=&quot;all, delete-orphan&quot;</code>).</p>
+<h2>Status Codes</h2>
+<table><thead><tr>
+<th>Code</th>
+<th>When</th>
+</tr></thead><tbody>
+<tr>
+<td>200</td>
+<td>Successful GET / PUT / PATCH</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Resource created</td>
+</tr>
+<tr>
+<td>204</td>
+<td>Deleted</td>
+</tr>
+<tr>
+<td>404</td>
+<td>ID does not exist</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Duplicate email, course id or enrollment</td>
+</tr>
+<tr>
+<td>422</td>
+<td>Invalid body or query</td>
+</tr>
+</tbody></table>
+<h2>Swagger UI</h2>
+<div class="info-box"><p>Screenshot: Swagger UI</p></div>
+<hr>
+<p><a href="../Lecture%2015/README.md">Lecture 15</a> | <a href="../README.md">Theory Index</a> | <a href="../Lecture%2025_Express/README.md">Lecture 25</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2015/Report.html">&larr; Previous: Data Modeling</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2025_Express/Report.html">Next: Introduction to Express.js &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2019_RESTful_APIs">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

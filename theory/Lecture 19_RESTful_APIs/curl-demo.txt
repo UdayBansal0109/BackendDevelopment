@@ -1,0 +1,18 @@
+$ POST /departments
+{"name":"Computer Science","id":1}
+$ POST /students
+{"name":"Aarav","email":"aarav@example.com","branch":"CSE","id":1,"enrollment_date":null,"department_id":1,"created_at":"2026-11-25T05:55:34","updated_at":null}
+$ POST /students (duplicate email) -> 409
+{"detail":"Email already registered"} [409]
+$ POST /students (bad email, bad branch) -> 422
+{"detail":[{"type":"value_error","loc":["body","email"],"msg":"value is not a valid email address: An email address must have an @-sign.","input":"bad","ctx":{"reason":"An email address must have an @
+$ GET /students?branch=CSE&page=1&limit=10
+{"data":[{"name":"Aarav","email":"aarav@example.com","branch":"CSE","id":1,"enrollment_date":null,"department_id":1,"created_at":"2026-11-25T05:55:34","updated_at":null}],"total":1,"page":1,"limit":10,"total_pages":1}
+$ POST /courses
+{"title":"Backend Development","credits":4,"id":"CS301","department_id":1,"created_at":"2026-11-25T05:55:35"}
+$ POST /students/1/enrollments
+{"student_id":1,"course_id":"CS301","semester":"2026-ODD","grade":null,"enrolled_at":"2026-11-25T05:55:35"}
+$ GET /students/1/enrollments
+[{"student_id":1,"course_id":"CS301","semester":"2026-ODD","grade":null,"enrolled_at":"2026-11-25T05:55:35"}]
+$ GET /students/99 -> 404
+{"detail":"Student with id 99 not found"} [404]

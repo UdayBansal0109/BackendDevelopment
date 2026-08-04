@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+
+# Python virtual environments
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.py[cod]
+
+# Django / SQLite databases created when the apps run
+db.sqlite3
+*.sqlite3
+*.db
+
+# Python test caches
+.pytest_cache/
+
+# Environment variables
+.env
+*.env
+
+# IDE / editor temporary files
+.vscode/
+.idea/
+*.swp
+*~
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Large archive files (exported Docker images are too big for GitHub)
+*.tar
+*.tar.gz
+
+# Logs
+*.log
+npm-debug.log*
+
+# Files uploaded while running the demo APIs
+uploads/
+media/
+
+# Note: lock files (package-lock.json, uv.lock) are intentionally committed for reproducible installs.
+
+# The PBL project is published as its own repository: https://github.com/UdayBansal0109/Backend-PBL
+pbl-assignment/

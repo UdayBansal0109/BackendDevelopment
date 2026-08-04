@@ -1,0 +1,12 @@
+Created: [<Student 1 Aarav (CSE)>, <Student 2 Diya (ECE)>, <Student 3 Rohan (CSE)>]
+Aarav's department: Computer Science
+
+CSE students: ['Aarav', 'Rohan']
+
+Diya's branch after update: IT
+
+Enrollments before delete: 2
+Students after deleting Aarav: ['Diya', 'Rohan']
+Enrollments after delete (cascade): 0
+Rejected by database: UNIQUE constraint failed: students.email
+Rejected by database: CHECK constraint failed: valid_branch

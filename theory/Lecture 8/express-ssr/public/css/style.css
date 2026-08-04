@@ -1,0 +1,39 @@
+/* Exercise 4: custom stylesheet - changes background colour and font */
+body {
+    background-color: #eef6f0;
+    font-family: Georgia, "Times New Roman", serif;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 15px;
+    color: #1f2d24;
+}
+
+nav a {
+    color: #1b7f4b;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #1b7f4b;
+    color: white;
+}
+
+/* Exercise 1: alternating row colours */
+.row-even {
+    background-color: #ffffff;
+}
+
+.row-odd {
+    background-color: #d8eedf;
+}

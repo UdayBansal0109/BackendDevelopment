@@ -1,0 +1,21 @@
+{
+  "name": "experiment-12b-sessions-cookies",
+  "version": "1.0.0",
+  "description": "Experiment 12B - sessions, cookies and state management",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "exercise1": "node exercise1-login.js",
+    "exercise2": "node exercise2-todo.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0"
+  }
+}

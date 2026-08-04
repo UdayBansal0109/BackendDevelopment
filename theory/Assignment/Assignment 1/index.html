@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1 - Notes App (localStorage)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>My Notes</h1>
+        <button id="themeToggle" type="button">Dark mode</button>
+    </header>
+
+    <main>
+        <!-- Add a note -->
+        <form id="noteForm">
+            <input type="text" id="noteInput" placeholder="Type a note..." maxlength="300">
+            <select id="categoryInput">
+                <option>General</option>
+                <option>Study</option>
+                <option>Personal</option>
+                <option>Work</option>
+            </select>
+            <button type="submit">Add Note</button>
+        </form>
+        <p id="message" role="status"></p>
+
+        <!-- Search, filter, import / export -->
+        <div class="toolbar">
+            <input type="search" id="searchInput" placeholder="Search notes...">
+            <select id="filterInput">
+                <option value="">All categories</option>
+                <option>General</option>
+                <option>Study</option>
+                <option>Personal</option>
+                <option>Work</option>
+            </select>
+            <button type="button" id="exportBtn">Export JSON</button>
+            <label class="file-button">
+                Import JSON
+                <input type="file" id="importInput" accept="application/json">
+            </label>
+        </div>
+
+        <p id="counter"></p>
+        <div id="notesList"></div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

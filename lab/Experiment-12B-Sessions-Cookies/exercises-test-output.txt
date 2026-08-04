@@ -1,0 +1,16 @@
+===== Exercise 1: login system (port 3001) =====
+GET /dashboard without login -> 302 Location: http://localhost:3001/login
+POST /register (uday) -> 302 http://localhost:3001/login?registered=1
+POST /register duplicate -> 302 http://localhost:3001/register?error=Username%20already%20exists
+POST /login wrong password -> 302 http://localhost:3001/login?error=Invalid%20username%20or%20password
+POST /login correct -> 302 http://localhost:3001/dashboard
+GET /dashboard with session -> Welcome, <strong>uday
+POST /logout -> 302 http://localhost:3001/login
+GET /dashboard after logout -> 302 http://localhost:3001/login
+
+===== Exercise 2: session to-do (port 3002) =====
+User A list:  Finish lab 12B, Revise sessions,
+User B list:  Browser B task,
+User A after deleting item 0:  Revise sessions,
+Set theme cookie: Set-Cookie: theme=dark; Max-Age=2592000; Path=/; Expires=Fri, 25 Dec 2026 05:28:20 GMT
+Page theme now: Theme: dark

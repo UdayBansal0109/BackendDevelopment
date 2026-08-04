@@ -1,0 +1,36 @@
+> node es6-features.js
+--- let / const ---
+counter = 2 | PI = 3.14
+
+--- Arrow functions ---
+square(5) = 25
+
+--- Template literals ---
+Hello Uday, welcome to Backend Development!
+
+--- Destructuring ---
+Aarav CSE | Node Express
+
+--- Spread / Rest ---
+fullStack: [ 'HTML', 'CSS', 'JavaScript', 'Node.js' ]
+updatedStudent: { id: 1, studentName: 'Aarav', branch: 'IT' }
+sumAll(1, 2, 3, 4) = 10
+
+--- Default parameters ---
+Hi Guest | Hi Uday
+
+--- Classes ---
+I am Uday, roll number 590013278
+
+--- Enhanced object literals ---
+Uday is 20 Node.js
+
+--- Promises / async-await ---
+Loaded student: { id: 1, name: 'Aarav' }
+Caught error: Invalid id
+
+> node modules-demo.mjs
+add(2, 3) = 5
+multiply(4, 5) = 20
+divide(10, 2) = 5
+divide(1, 0) = Cannot divide by zero

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Server-Side Rendering &amp; Templating — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%208">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L08 — Server-Side Rendering &amp; Templating</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 1: Introduction to Backend Development</strong>
+    </p>
+    <p class="meta">EJS table with alternating rows, an About page and custom CSS; FastAPI + Jinja2 date page and static image.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 1:</strong> Introduction to Backend Development</p>
+<h2>Objective</h2>
+<p>Build HTML on the server with EJS (Express) and Jinja2 (FastAPI), and serve static files.</p>
+<h2>Technologies</h2>
+<p>Express.js, EJS, FastAPI, Jinja2</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Lecture 8/
+├── express-ssr/
+│   ├── server.js
+│   ├── views/            # students.ejs, about.ejs
+│   └── public/css/       # style.css
+├── fastapi-jinja/
+│   ├── main.py
+│   ├── templates/        # time.html, gallery.html
+│   └── static/images/    # campus.svg
+├── screenshots/
+└── test-output.txt
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+cd express-ssr &amp;&amp; npm install &amp;&amp; node server.js                                   # http://localhost:3000
+cd fastapi-jinja &amp;&amp; pip install -r requirements.txt &amp;&amp; uvicorn main:app --reload  # http://127.0.0.1:8000
+</code></pre>
+<hr>
+<h2>Lab Exercise</h2>
+<table><thead><tr>
+<th>#</th>
+<th>Requirement</th>
+<th>Implementation</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Student table with alternating row colours</td>
+<td><code>row-even</code> / <code>row-odd</code> from the loop index</td>
+</tr>
+<tr>
+<td>2</td>
+<td>EJS <code>GET /about</code> with course + lecturer variables</td>
+<td><code>res.render(&quot;about&quot;, { courseName, lecturerName })</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>FastAPI page with current date/time <code>{{ now }}</code></td>
+<td><code>templates/time.html</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Custom CSS file served by Express</td>
+<td><code>express.static(&quot;public&quot;)</code> returns 200 text/css</td>
+</tr>
+<tr>
+<td>5</td>
+<td>FastAPI image from <code>static/images/</code> in a template</td>
+<td><code>StaticFiles</code> + <code>url_for(&#x27;static&#x27;, path=...)</code></td>
+</tr>
+</tbody></table>
+<h2>Screenshots</h2>
+<table><thead><tr>
+<th>Student Table (Ex 1, 4)</th>
+<th>About Page (Ex 2)</th>
+</tr></thead><tbody>
+<tr>
+<td>![](screenshots/students-table.png)</td>
+<td>![](screenshots/about.png)</td>
+</tr>
+<tr>
+<td><strong>Date and Time (Ex 3)</strong></td>
+<td><strong>Static Image (Ex 5)</strong></td>
+</tr>
+<tr>
+<td>![](screenshots/fastapi-time.png)</td>
+<td>![](screenshots/fastapi-gallery.png)</td>
+</tr>
+</tbody></table>
+<h2>SSR vs CSR</h2>
+<table><thead><tr>
+<th></th>
+<th>Server-Side Rendering</th>
+<th>Client-Side Rendering</th>
+</tr></thead><tbody>
+<tr>
+<td>HTML built by</td>
+<td>Server (EJS / Jinja2)</td>
+<td>Browser JavaScript</td>
+</tr>
+<tr>
+<td>Server sends</td>
+<td>Full HTML page</td>
+<td>JSON</td>
+</tr>
+<tr>
+<td>First load and SEO</td>
+<td>Fast, crawlable</td>
+<td>Slower, needs JS</td>
+</tr>
+</tbody></table>
+<p><code>&lt;%= %&gt;</code> and <code>{{ }}</code> escape HTML automatically, providing protection against XSS.</p>
+<hr>
+<p><a href="../Lecture%207/README.md">Lecture 7</a> | <a href="../README.md">Theory Index</a> | <a href="../Lecture%2013/README.md">Lecture 13</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%207/Report.html">&larr; Previous: localStorage, sessionStorage &amp; JSON</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2013/Report.html">Next: Introduction to Databases &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%208">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+=== Exp 13B API test ===
+1) register:
+{"success":true,"message":"User registered successfully","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2YjA2NzNlNjU4OGI1OWQ4NDhiMTMxZTAiLCJpYXQiO
+2) register invalid:
+{"success":false,"message":"Username must be at least 3 characters, Please enter a valid email, Password must be at least 6 characters"}
+3) login wrong:
+{"success":false,"message":"Invalid credentials"} [401]
+4) login ok, token length 176
+5) todos without token:
+{"success":false,"message":"No token, authorization denied"} [401]
+6) created todo 6b0673e6588b59d848b131e2
+7) invalid priority:
+{"success":false,"message":"`urgent` is not a valid enum value for path `priority`."}
+8) list:
+{"success":true,"count":1,"todos":[{"_id":"6b0673e6588b59d848b131e2","user":"6b0673e6588b59d848b131e0","title":"Finish Exp 13B","completed":false,"priority":"high","createdAt":"2026-11-25T05:36:38.934
+9) update:
+{"success":true,"message":"Todo updated successfully","todo":{"_id":"6b0673e6588b59d848b131e2","user":"6b0673e6588b59d84
+10) filter completed=true count:
+1
+11) delete:
+{"success":true,"message":"Todo deleted successfully"}
+12) get deleted:
+{"success":false,"message":"Todo not found"} [404]
+13) password stored hashed? (/me hides it):
+{"success":true,"user":{"_id":"6b0673e6588b59d848b131e0","username":"uday","email":"uday@example.com","createdAt":"2026-11-25T05:36:38.059Z","updatedA

@@ -1,0 +1,8 @@
+=== Exp 13A test (MongoDB via Mongoose) ===
+POST /signup uday -> User registered successfully!
+POST /signup duplicate -> Error: Username or email already exists
+POST /login wrong pw -> Incorrect password
+POST /login unknown -> User not found
+POST /login ok -> Login successful!
+Welcome back, uday
+GET /users -> Username:</strong> uday

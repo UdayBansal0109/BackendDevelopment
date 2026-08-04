@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RESTful APIs with FastAPI — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%205">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L05 — RESTful APIs with FastAPI</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 1: Introduction to Backend Development</strong>
+    </p>
+    <p class="meta">Full CRUD for a Course resource with a department filter, Swagger UI and ReDoc, tested with pytest.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 1:</strong> Introduction to Backend Development</p>
+<h2>Objective</h2>
+<p>Build a complete CRUD API for a Course resource with automatic Swagger and ReDoc documentation.</p>
+<h2>Technologies</h2>
+<p>Python, FastAPI, uvicorn, pytest</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Lecture 5/
+├── main.py                 # Course API
+├── test_main.py            # 6 pytest tests
+├── requirements.txt        # fastapi, uvicorn
+├── requirements-dev.txt    # pytest, httpx
+└── screenshots/            # swagger-ui.png, redoc.png
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt -r requirements-dev.txt
+uvicorn main:app --reload        # http://127.0.0.1:8000/docs
+pytest -v
+</code></pre>
+<hr>
+<h2>Lab Exercise</h2>
+<table><thead><tr>
+<th>#</th>
+<th>Requirement</th>
+<th>Implementation</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Course: <code>id, title, credits, department</code></td>
+<td>Pydantic <code>CourseCreate</code> / <code>Course</code> (title &gt;= 3 chars, credits 1–6)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Five CRUD operations</td>
+<td>GET all, GET by id, POST, PUT, DELETE</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Swagger UI + screenshot</td>
+<td><code>screenshots/swagger-ui.png</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>ReDoc</td>
+<td><code>screenshots/redoc.png</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Filter <code>GET /courses?department=CSE</code></td>
+<td>Optional, case-insensitive query parameter</td>
+</tr>
+</tbody></table>
+<h2>REST Mapping</h2>
+<table><thead><tr>
+<th>Method</th>
+<th>URL</th>
+<th>Action</th>
+<th>Success</th>
+</tr></thead><tbody>
+<tr>
+<td><code>GET</code></td>
+<td><code>/courses</code></td>
+<td>Read all (optional <code>?department=</code>)</td>
+<td>200</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/courses/{id}</code></td>
+<td>Read one</td>
+<td>200</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/courses</code></td>
+<td>Create</td>
+<td>201</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><code>/courses/{id}</code></td>
+<td>Replace</td>
+<td>200</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/courses/{id}</code></td>
+<td>Delete</td>
+<td>204</td>
+</tr>
+</tbody></table>
+<p>Errors: unknown id returns 404; invalid body (e.g. <code>credits: 10</code>) returns 422.</p>
+<h2>Screenshots</h2>
+<table><thead><tr>
+<th>Swagger UI</th>
+<th>ReDoc</th>
+</tr></thead><tbody>
+<tr>
+<td>![](screenshots/swagger-ui.png)</td>
+<td>![](screenshots/redoc.png)</td>
+</tr>
+</tbody></table>
+<hr>
+<p><a href="../Lecture%204/README.md">Lecture 4</a> | <a href="../README.md">Theory Index</a> | <a href="../Lecture%206/README.md">Lecture 6</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%204/Report.html">&larr; Previous: HTTP Requests, DevTools, curl, Postman &amp; fetch</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%206/Report.html">Next: Sessions, Cookies &amp; State Management &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%205">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

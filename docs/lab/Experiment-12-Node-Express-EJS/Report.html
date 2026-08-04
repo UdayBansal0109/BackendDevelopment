@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node.js, npm, Express, nodemon &amp; EJS — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#labs">Lab Experiments</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-12-Node-Express-EJS">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>12A — Node.js, npm, Express, nodemon &amp; EJS</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P)
+    </p>
+    <p class="meta">Routes, parameters, a calculator API, student routes, an EJS timetable and a registration form.</p>
+  </header>
+
+  <main class="content">
+<h2>Objective</h2>
+<p>Develop server-side applications using Node.js and Express, covering routes, parameters, POST data, a calculator API and EJS template rendering.</p>
+<h2>Technologies</h2>
+<p>Node.js, Express.js, EJS, nodemon</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Experiment-12-Node-Express-EJS/
+├── app.js              # Express server with all routes
+├── script.js           # Plain Node.js script (Part A)
+├── nodemon.json        # Auto-restart configuration
+├── package.json        # Scripts: start, dev, script
+├── views/
+│   ├── home.ejs, users.ejs, profile.ejs   # Tutorial templates
+│   ├── timetable.ejs                      # Task 4 — course timetable
+│   └── register.ejs, result.ejs           # Task 5 — registration form
+├── sceernshot/         # Screenshots
+└── test-output.txt     # curl test results
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+npm install
+npm start          # node app.js       → http://localhost:3000
+npm run dev        # nodemon app.js    → auto-restart on changes
+npm run script     # node script.js
+</code></pre>
+<hr>
+<h2>Lab Tasks</h2>
+<table><thead><tr>
+<th>#</th>
+<th>Task</th>
+<th>Routes</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Name, roll number and branch as text, HTML and JSON</td>
+<td><code>GET /text</code>, <code>GET /html</code>, <code>GET /json</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Calculator (add, subtract, multiply, divide, modulus, power)</td>
+<td><code>GET /calculate?num1=10&amp;num2=3&amp;operation=modulus</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Student management</td>
+<td><code>GET /students</code>, <code>GET /students/:id</code> (404), <code>POST /students/add</code> (400 validation)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>EJS course timetable</td>
+<td><code>GET /timetable</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Registration form with result page</td>
+<td><code>GET /register-form</code>, <code>POST /register-form</code></td>
+</tr>
+</tbody></table>
+<p>Additional tutorial routes: <code>/</code>, <code>/user/:id</code>, <code>/product/:category/:id</code>, <code>/search?q=</code>, <code>POST /register</code>, <code>POST /login</code>, <code>/home</code>, <code>/users</code>, <code>/profile/:id</code>.</p>
+<h2>Test Results</h2>
+<pre><code>
+GET /calculate?num1=2&amp;num2=10&amp;operation=power  →  {&quot;result&quot;: 1024}
+GET /students/99                                →  {&quot;message&quot;: &quot;Student not found&quot;}  [404]
+POST /students/add                              →  {&quot;message&quot;: &quot;Student added successfully&quot;, ...}
+</code></pre>
+<p>Full output: <a href="test-output.txt">test-output.txt</a></p>
+<h2>Screenshots</h2>
+<table><thead><tr>
+<th>Node Script</th>
+<th>Express Server</th>
+</tr></thead><tbody>
+<tr>
+<td>![](sceernshot/01-node-script.png.png)</td>
+<td>![](sceernshot/02-express-server.png.png)</td>
+</tr>
+<tr>
+<td><strong>JSON Response</strong></td>
+<td><strong>URL Parameter</strong></td>
+</tr>
+<tr>
+<td>![](sceernshot/03-json-response.png.png)</td>
+<td>![](sceernshot/04-url-parameter.png.png)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Key Concepts</h2>
+<ul>
+<li><code>res.send()</code> sends text/HTML, <code>res.json()</code> sends JSON, <code>res.render()</code> renders an EJS template.</li>
+<li><code>req.params</code> captures URL parameters (<code>/students/:id</code>), <code>req.query</code> captures query strings (<code>?num1=</code>), <code>req.body</code> captures POST data (requires <code>express.json()</code> or <code>express.urlencoded()</code> middleware).</li>
+<li>EJS tags: <code>&lt;%= %&gt;</code> prints escaped output, <code>&lt;% %&gt;</code> runs JavaScript, <code>&lt;%- %&gt;</code> prints raw HTML.</li>
+<hr>
+</ul>
+<p><a href="../README.md">Lab Index</a> | <a href="../../README.md">Repository Home</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#labs">Back to Lab Experiments</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-07-08-ES6-DOM/Report.html">&larr; Previous: ES6, DOM Manipulation &amp; Event Handling</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-12B-Sessions-Cookies/Report.html">Next: State Management: Sessions &amp; Cookies &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-12-Node-Express-EJS">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

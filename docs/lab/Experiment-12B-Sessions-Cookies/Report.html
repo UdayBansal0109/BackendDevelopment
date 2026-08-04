@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>State Management: Sessions &amp; Cookies — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#labs">Lab Experiments</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-12B-Sessions-Cookies">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>12B — State Management: Sessions &amp; Cookies</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P)
+    </p>
+    <p class="meta">Session login/logout and cookies, a protected dashboard with bcrypt, and a per-session to-do list.</p>
+  </header>
+
+  <main class="content">
+<h2>Objective</h2>
+<p>Understand how servers maintain state across HTTP requests using <code>express-session</code> for server-side sessions and <code>cookie-parser</code> for client-side cookies.</p>
+<h2>Technologies</h2>
+<p>Node.js, Express.js, express-session, cookie-parser, bcryptjs</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Experiment-12B-Sessions-Cookies/
+├── server.js                    # Tutorial: session login/logout, set/get/delete cookie
+├── exercise1-login.js           # Exercise 1: register, login, dashboard, logout
+├── exercise2-todo.js            # Exercise 2: per-session to-do list + theme cookie
+├── exercises-test-output.txt    # curl test results for both exercises
+└── sceernshot/                  # Screenshots
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+npm install
+npm start            # server.js          → http://localhost:3000
+npm run exercise1    # exercise1-login.js → http://localhost:3001
+npm run exercise2    # exercise2-todo.js  → http://localhost:3002
+</code></pre>
+<hr>
+<h2>Application Features</h2>
+<table><thead><tr>
+<th>Application</th>
+<th>Features</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Tutorial</strong> (<code>server.js</code>)</td>
+<td>Session login/logout, <code>res.cookie()</code>, <code>req.cookies</code>, <code>res.clearCookie()</code></td>
+</tr>
+<tr>
+<td><strong>Exercise 1</strong></td>
+<td>Register with bcrypt-hashed passwords, login, protected dashboard via <code>authMiddleware</code>, logout with <code>req.session.destroy()</code></td>
+</tr>
+<tr>
+<td><strong>Exercise 2</strong></td>
+<td>Per-session to-do list stored in <code>req.session.todos</code>, theme cookie (dark/light mode with 30-day expiry)</td>
+</tr>
+</tbody></table>
+<h2>Test Results</h2>
+<table><thead><tr>
+<th>Test</th>
+<th>Result</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/dashboard</code> without login</td>
+<td><code>302</code> redirect to <code>/login</code></td>
+</tr>
+<tr>
+<td>Duplicate username or wrong password</td>
+<td>Rejected with appropriate message</td>
+</tr>
+<tr>
+<td>Login, view dashboard, logout, access dashboard again</td>
+<td>Greeting shown, then <code>302</code> redirect</td>
+</tr>
+<tr>
+<td>Two browsers (separate cookie jars)</td>
+<td>Independent to-do lists</td>
+</tr>
+<tr>
+<td><code>GET /theme/dark</code></td>
+<td>Sets <code>theme=dark</code> cookie with <code>Max-Age=2592000</code></td>
+</tr>
+</tbody></table>
+<p>Full output: <a href="exercises-test-output.txt">exercises-test-output.txt</a></p>
+<h2>Screenshots</h2>
+<table><thead><tr>
+<th>Server Running</th>
+<th>Session Login</th>
+<th>Session Logout</th>
+</tr></thead><tbody>
+<tr>
+<td>![](sceernshot/01-server-running.png.png)</td>
+<td>![](sceernshot/02-session-login.png.png)</td>
+<td>![](sceernshot/03-session-logout.png.png)</td>
+</tr>
+<tr>
+<td><strong>Cookie Set</strong></td>
+<td><strong>Cookie Retrieved</strong></td>
+<td><strong>Cookie Deleted</strong></td>
+</tr>
+<tr>
+<td>![](sceernshot/04-cookie-set.png.png)</td>
+<td>![](sceernshot/05-cookie-retrieved.png.png)</td>
+<td>![](sceernshot/06-cookie-deleted.png.png)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Session vs Cookie</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Session</th>
+<th>Cookie</th>
+</tr></thead><tbody>
+<tr>
+<td>Stored</td>
+<td>On the server (only the session ID <code>connect.sid</code> is in the browser)</td>
+<td>In the browser</td>
+</tr>
+<tr>
+<td>Use cases</td>
+<td>Login state, shopping cart, to-do list</td>
+<td>Small preferences (theme, language)</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Data hidden from the user</td>
+<td>User can read and modify; use <code>httpOnly</code>, <code>secure</code> and <code>signed</code> flags for protection</td>
+</tr>
+</tbody></table>
+<hr>
+<p><a href="../README.md">Lab Index</a> | <a href="../../README.md">Repository Home</a></p>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#labs">Back to Lab Experiments</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-12-Node-Express-EJS/Report.html">&larr; Previous: Node.js, npm, Express, nodemon &amp; EJS</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-13A-Mongoose/Report.html">Next: MongoDB + Mongoose Registration &amp; Login &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-12B-Sessions-Cookies">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

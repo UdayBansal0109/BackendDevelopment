@@ -1,0 +1,33 @@
+===== Express (port 3000) =====
+$ curl localhost:3000/
+<!DOCTYPE html> <html> <head> <title>Home</title> </head> <body> <h1>Student Management API</h1> <p>Welcome to the backend server.</p> <ul> <li><a href="/view/students">View All Students (EJS)</a></li> <li><a href="/html/students">Students as an HTML string</a></li> <li><a href="/students">Students 
+$ curl localhost:3000/students
+[{"id":1,"name":"Aarav","branch":"CSE"},{"id":2,"name":"Diya","branch":"ECE"},{"id":3,"name":"Rohan","branch":"IT"},{"id":4,"name":"Kabir","branch":"CSE"}] [HTTP 200]
+$ curl localhost:3000/students/1
+{"id":1,"name":"Aarav","branch":"CSE"} [HTTP 200]
+$ curl localhost:3000/students/5
+{"error":"Student not found"} [HTTP 404]
+$ curl localhost:3000/students/branch/CSE
+[{"id":1,"name":"Aarav","branch":"CSE"},{"id":4,"name":"Kabir","branch":"CSE"}] [HTTP 200]
+$ curl localhost:3000/students/branch/ME
+{"error":"No students found in branch ME"} [HTTP 404]
+$ curl localhost:3000/html/students
+<h2>All Students</h2><ul><li><strong>Aarav</strong> — CSE</li><li><strong>Diya</strong> — ECE</li><li><strong>Rohan</strong> — IT</li><li><strong>Kabir</strong> — CSE</li></ul> [HTTP 200]
+$ curl localhost:3000/view/students
+<!DOCTYPE html> <html> <head> <title>Students</title> </head> <body> <h1>All Students</h1> <ul> <li><strong>Aarav</strong> — CSE</li> <li><strong>Diya</strong> — ECE</li> <li><strong>Rohan</strong> — IT</li> <li><strong>Kabir</strong> — CSE</li> </ul> <a href="/">Back to Home</a> </body> </h
+
+===== Flask (port 5000) =====
+$ curl localhost:5000/
+Student Management API [HTTP 200]
+$ curl localhost:5000/students
+[ { "branch": "CSE", "id": 1, "name": "Aarav" }, { "branch": "ECE", "id": 2, "name": "Diya" }, { "branch": "IT", "id": 3, "name": "Rohan" } ] [HTTP 200]
+$ curl localhost:5000/students/1
+{ "branch": "CSE", "id": 1, "name": "Aarav" } [HTTP 200]
+$ curl localhost:5000/students/5
+{ "error": "Student not found" } [HTTP 404]
+$ curl -X POST localhost:5000/students -H "Content-Type: application/json" -d {"name":"Meera","branch":"IT"}
+{ "branch": "IT", "id": 4, "name": "Meera" } [HTTP 201]
+$ curl -X POST localhost:5000/students -d {}
+{ "error": "name and branch are required" } [HTTP 400]
+$ curl localhost:5000/students   (after POST)
+[ { "branch": "CSE", "id": 1, "name": "Aarav" }, { "branch": "ECE", "id": 2, "name": "Diya" }, { "branch": "IT", "id": 3, "name": "Rohan" }, { "branch": "IT", "id": 4, "name": "Meera" } ] 

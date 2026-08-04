@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deployment &amp; Containerization — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2037-39_Docker_Deployment">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L37–39 — Deployment &amp; Containerization</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 4: Deployment, CI/CD and Scaling</strong>
+    </p>
+    <p class="meta">The same Student API contract in FastAPI and Express, built as two images and run on separate ports.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 4:</strong> Deployment, CI/CD and Scaling</p>
+<h2>Objective</h2>
+<p>Implement the same Student API contract in FastAPI and Express, then package both as portable Docker images.</p>
+<h2>Technologies</h2>
+<p>Docker, FastAPI, Express.js</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Lecture 37-39_Docker_Deployment/
+└── student-docker-api/
+    ├── fastapi-app/   main.py, requirements.txt, Dockerfile, .dockerignore
+    ├── express-app/   server.js, package.json, Dockerfile, .dockerignore
+    ├── run-output.txt
+    └── README.md      # Build/run commands, results, problem and solution, exit answers
+</code></pre>
+<h2>Quick Start</h2>
+<pre><code class="language-bash">
+cd student-docker-api
+docker build -t student-api-fastapi:1.0 ./fastapi-app
+docker build -t student-api-express:1.0 ./express-app
+docker run -d --name student-fastapi -p 8000:8000 student-api-fastapi:1.0
+docker run -d --name student-express -p 3000:3000 student-api-express:1.0
+curl http://localhost:8000/health &amp;&amp; curl http://localhost:3000/health
+</code></pre>
+<h2>Related Docker Work</h2>
+<table><thead><tr>
+<th>Folder</th>
+<th>Contents</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="../Docker%20Basic%20Commands/README.md">Docker Basic Commands</a></td>
+<td>nginx container, custom image, export/restore</td>
+</tr>
+<tr>
+<td><a href="../Express.js%20Task/README.md">Express.js Task</a></td>
+<td>Express app containerized and exported as a <code>.tar</code></td>
+</tr>
+</tbody></table>
+<hr>
+<p><a href="../Lecture%2029_Django_Testing_Debugging/README.md">Lecture 29</a> | <a href="../README.md">Theory Index</a> | <a href="https://github.com/UdayBansal0109/Backend-PBL">PBL Assignment</a></p>
+
+<h2>Execution Screenshots</h2>
+<h3>FastAPI Main Code</h3>
+<p>FastAPI `main.py` in VS Code — Student CRUD API with SQLite, Pydantic models, and structured logging.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 37-39_Docker_Deployment/screenshot/01-fastapi-main-code.png" alt="FastAPI Main Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>FastAPI Dockerfile</h3>
+<p>FastAPI `Dockerfile` in VS Code — multi-stage build with cached dependencies and non-root user.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 37-39_Docker_Deployment/screenshot/02-fastapi-dockerfile.png" alt="FastAPI Dockerfile" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>Express Dockerfile</h3>
+<p>Express `Dockerfile` in VS Code — Node.js container with npm ci and production configuration.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 37-39_Docker_Deployment/screenshot/03-express-dockerfile.png" alt="Express Dockerfile" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>Docker Run Output</h3>
+<p>`run-output.txt` in VS Code — Docker build, run and curl test results for both containers.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 37-39_Docker_Deployment/screenshot/04-docker-run-output.png" alt="Docker Run Output" style="max-width:100%;border-radius:8px;margin:12px 0;">
+</main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Express.js%20Task/Report.html">&larr; Previous: Express.js Task – Containerized App</a>
+    
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2037-39_Docker_Deployment">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

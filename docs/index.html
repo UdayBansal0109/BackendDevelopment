@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backend Development · Coursework – Uday Bansal</title>
+  <meta name="description" content="Backend Development (CSFS3008P) coursework: theory lectures, laboratory experiments, assignments and the PBL project.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Navigation ===== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">{ }</span>
+        <span>Backend Development</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#theory">Theory</a></li>
+        <li><a href="#labs">Laboratory</a></li>
+        <li><a href="#assignments">Assignments</a></li>
+        <li><a href="#pbl">PBL Project</a></li>
+        <li><a class="nav-cta" id="repo-link" href="https://github.com/UdayBansal0109/BackendDevelopment" target="_blank" rel="noopener">GitHub ↗</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <p class="eyebrow" id="course-meta">CSFS3008P · B.Tech CSE · Semester 5</p>
+        <h1 id="course-title">Backend Development</h1>
+        <p class="subtitle" id="course-subtitle">Coursework, Theory Lectures &amp; Laboratory Experiments</p>
+        <dl class="profile" id="profile"></dl>
+        <div class="stats" id="stats" aria-label="Coursework summary"></div>
+      </div>
+    </section>
+
+    <!-- ===== Search ===== -->
+    <section class="search-bar" aria-label="Search coursework">
+      <div class="container">
+        <label for="search" class="visually-hidden">Search lectures and experiments</label>
+        <div class="search-field">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.39-1.42 1.42-5.39-5.39A8 8 0 1 1 10 2Zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z"/></svg>
+          <input id="search" type="search" placeholder="Search lectures, experiments or technologies (e.g. Django, MongoDB, L19)…" autocomplete="off">
+        </div>
+        <div class="filters" role="group" aria-label="Filter by section">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="theory">Theory</button>
+          <button class="chip" data-filter="labs">Laboratory</button>
+          <button class="chip" data-filter="assignments">Assignments</button>
+        </div>
+        <p class="result-count" id="result-count" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ===== Theory ===== -->
+    <section class="section" id="theory" data-section="theory">
+      <div class="container">
+        <div class="section-head">
+          <h2>Theory Lectures</h2>
+          <p>Hands-on exercises from the lecture notes, organised unit-wise.</p>
+        </div>
+        <nav class="unit-nav" id="unit-nav" aria-label="Units"></nav>
+        <div id="units"></div>
+      </div>
+    </section>
+
+    <!-- ===== Labs ===== -->
+    <section class="section alt" id="labs" data-section="labs">
+      <div class="container">
+        <div class="section-head">
+          <h2>Laboratory Experiments</h2>
+          <p>Lab experiments and the mid-semester lab examination.</p>
+        </div>
+        <div class="grid" id="lab-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== Assignments ===== -->
+    <section class="section" id="assignments" data-section="assignments">
+      <div class="container">
+        <div class="section-head">
+          <h2>Assignments</h2>
+          <p>Graded theory assignments.</p>
+        </div>
+        <div class="grid" id="assignment-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== PBL ===== -->
+    <section class="section alt" id="pbl">
+      <div class="container">
+        <div class="section-head">
+          <h2>PBL Project</h2>
+          <p>Published as a separate public repository.</p>
+        </div>
+        <article class="pbl-card" id="pbl-card"></article>
+      </div>
+    </section>
+
+    <p class="empty-state container" id="empty-state" hidden>No coursework matches your search.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner" id="footer"></div>
+  </footer>
+
+  <noscript>
+    <p class="container">This page needs JavaScript to list the coursework. Browse the
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment">repository on GitHub</a> instead.</p>
+  </noscript>
+
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

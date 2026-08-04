@@ -1,0 +1,46 @@
+{
+  "info": {
+    "name": "Lecture 4 - Student API",
+    "description": "Requests used in Lecture 4 (Express on port 3000, Flask on port 5000). Import in Postman: File > Import.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Flask - GET all students",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:5000/students"
+      }
+    },
+    {
+      "name": "Flask - POST new student",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Meera\",\n  \"branch\": \"IT\"\n}" },
+        "url": "http://localhost:5000/students"
+      }
+    },
+    {
+      "name": "Express - GET all students",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/students"
+      }
+    },
+    {
+      "name": "Express - GET student 3",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/students/3"
+      }
+    },
+    {
+      "name": "Express - GET student 99 (404)",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:3000/students/99"
+      }
+    }
+  ]
+}

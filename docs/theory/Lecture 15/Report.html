@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Modeling — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#theory">Theory Lectures</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2015">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>L15 — Data Modeling</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P) | <strong>Unit 2: Databases and RESTful APIs</strong>
+    </p>
+    <p class="meta">E-commerce conceptual model, SQLAlchemy models with cascade delete, and validated Mongoose blog schemas.</p>
+  </header>
+
+  <main class="content">
+<p><strong>Unit 2:</strong> Databases and RESTful APIs</p>
+<h2>Objective</h2>
+<p>Define conceptual, relational and document data models with relationships and validation rules.</p>
+<h2>Technologies</h2>
+<p>Python, SQLAlchemy, Mongoose, MongoDB</p>
+<hr>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+pip install -r requirements.txt &amp;&amp; python crud_demo.py        # SQLAlchemy (in-memory SQLite)
+npm install &amp;&amp; node test-blog-models.js                       # Mongoose validation
+MONGO_URL=mongodb://127.0.0.1:27017/blog_test node test-blog-models.js   # + unique index and populate
+</code></pre>
+<h2>Lab Exercise</h2>
+<table><thead><tr>
+<th>#</th>
+<th>Requirement</th>
+<th>Where</th>
+<th>Result</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Conceptual model — E-Commerce (Product, Order, Customer, Cart)</td>
+<td>Diagram below</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SQLAlchemy models for Student Management with relationships</td>
+<td><code>sqlalchemy_models.py</code></td>
+<td>Department 1-to-many Student, Student many-to-many Course via Enrollment</td>
+</tr>
+<tr>
+<td>3</td>
+<td>CRUD: create with department, read by branch, update branch, delete + cascade</td>
+<td><code>crud_demo.py</code></td>
+<td><code>crud-output.txt</code> — enrollments 2 to 0 after deleting the student</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Mongoose schemas for Blog: Post and Comment</td>
+<td><code>blog-models.js</code></td>
+<td>Comment references Post by ObjectId; <code>post.comments</code> virtual populate</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Validation rules (required, unique, enum)</td>
+<td>Both files</td>
+<td><code>mongoose-output.txt</code>; SQL UNIQUE/CHECK errors in <code>crud-output.txt</code></td>
+</tr>
+</tbody></table>
+<hr>
+<h2>1. Conceptual Data Model — E-Commerce</h2>
+<pre><code class="language-mermaid">
+erDiagram
+    CUSTOMER ||--|| CART : owns
+    CART     ||--o{ CART_ITEM : contains
+    PRODUCT  ||--o{ CART_ITEM : &quot;added as&quot;
+    CUSTOMER ||--o{ ORDER : places
+    ORDER    ||--|{ ORDER_ITEM : contains
+    PRODUCT  ||--o{ ORDER_ITEM : &quot;sold as&quot;
+
+    CUSTOMER { int customer_id PK
+               string name
+               string email UK
+               string address }
+    PRODUCT  { int product_id PK
+               string name
+               decimal price
+               int stock }
+    CART     { int cart_id PK
+               int customer_id FK }
+    CART_ITEM { int cart_id FK
+                int product_id FK
+                int quantity }
+    ORDER    { int order_id PK
+               int customer_id FK
+               date order_date
+               string status }
+    ORDER_ITEM { int order_id FK
+                 int product_id FK
+                 int quantity
+                 decimal unit_price }
+</code></pre>
+<ul>
+<li>A customer has one cart and many orders.</li>
+<li>Cart-Product and Order-Product are many-to-many, resolved by <code>CART_ITEM</code> and <code>ORDER_ITEM</code>.</li>
+<li><code>ORDER_ITEM.unit_price</code> stores the price at the time of purchase (product price may change later).</li>
+</ul>
+<h2>Validation Rules Used</h2>
+<table><thead><tr>
+<th>Rule</th>
+<th>SQLAlchemy / SQL</th>
+<th>Mongoose</th>
+</tr></thead><tbody>
+<tr>
+<td>Required</td>
+<td><code>nullable=False</code></td>
+<td><code>required: [true, msg]</code></td>
+</tr>
+<tr>
+<td>Unique</td>
+<td><code>unique=True</code> (email)</td>
+<td><code>unique: true</code> (slug) — E11000</td>
+</tr>
+<tr>
+<td>Enum / allowed values</td>
+<td><code>CHECK (branch IN (...))</code></td>
+<td><code>enum: [&#x27;draft&#x27;,&#x27;published&#x27;,&#x27;archived&#x27;]</code></td>
+</tr>
+<tr>
+<td>Range / length</td>
+<td><code>CHECK (credits BETWEEN 1 AND 6)</code></td>
+<td><code>minlength</code>, <code>maxlength</code>, <code>min</code></td>
+</tr>
+<tr>
+<td>Pattern</td>
+<td>—</td>
+<td><code>match: /^\S+@\S+\.\S+$/</code></td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>—</td>
+<td><code>validate: tags.length &lt;= 5</code></td>
+</tr>
+</tbody></table>
+<h2>SQL vs Document Modeling</h2>
+<ul>
+<li><strong>Relational:</strong> normalize into tables, link with foreign keys, join when reading.</li>
+<li><strong>Document:</strong> embed data that is read together (author inside post), reference data that grows without limit (comments are a separate collection referencing the post).</li>
+<hr>
+</ul>
+<p><a href="../Lecture%2014/README.md">Lecture 14</a> | <a href="../README.md">Theory Index</a> | <a href="../Lecture%2019_RESTful_APIs/README.md">Lecture 19</a></p>
+
+<h2>Execution Screenshots</h2>
+<h3>SQLAlchemy Models Code</h3>
+<p>`sqlalchemy_models.py` in VS Code — Department, Student and Enrollment ORM models with relationships and constraints.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 15/screenshot/01-sqlalchemy-models-code.png" alt="SQLAlchemy Models Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>CRUD Demo Code</h3>
+<p>`crud_demo.py` in VS Code — demonstrates create, read, update, delete and constraint violation handling.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 15/screenshot/02-crud-demo-code.png" alt="CRUD Demo Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>SQLAlchemy Output</h3>
+<p>`crud-output.txt` in VS Code — CRUD operation results including cascade delete and constraint error messages.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 15/screenshot/03-sqlalchemy-output.png" alt="SQLAlchemy Output" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>Mongoose Output</h3>
+<p>`mongoose-output.txt` in VS Code — blog schema validation, E11000 duplicate key error, and populate results.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/theory/Lecture 15/screenshot/04-mongoose-output.png" alt="Mongoose Output" style="max-width:100%;border-radius:8px;margin:12px 0;">
+</main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#theory">Back to Theory Lectures</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2014/Report.html">&larr; Previous: Schema Design &amp; Normalization</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/theory/Lecture%2019_RESTful_APIs/Report.html">Next: Implementing RESTful APIs &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/theory/Lecture%2015">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+ {% extends 'todo/base.html' %} {% block title %}Add Task | Task Tracker{% endblock %} {% block content %}
+<section class="panel">
+    <h1>Add a Task</h1>
+
+    <form method="post" class="task-form">
+        {% csrf_token %}
+
+        <label for="title">Task Title:</label>
+        <input type="text" id="title" name="title" maxlength="200" required>
+        <small id="charCount">0 / 200 characters</small>
+
+        <button type="submit">Save Task</button>
+    </form>
+
+    <p>
+        <a href="{% url 'task_list' %}">Back to Task List</a>
+    </p>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Page-specific style, only loaded on the Add Task page */
+    #charCount {
+        display: block;
+        color: #5b6577;
+        margin-bottom: 0.75rem;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Page-specific script: live character counter for the task title
+    document.addEventListener("DOMContentLoaded", function() {
+        const input = document.querySelector("#title");
+        const counter = document.querySelector("#charCount");
+
+        input.addEventListener("input", function() {
+            counter.textContent = input.value.length + " / 200 characters";
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,40 @@
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying sessions.0001_initial... OK
+  Applying students.0001_initial...test_cached_summary_can_be_stale (students.tests.PerformanceTests.test_cached_summary_can_be_stale) ... 2026-11-25 11:42:12,738 INFO students.requests: GET /api/students/summary/ -> 200 (11.98 ms)
+test_optimized_list_uses_two_queries (students.tests.PerformanceTests.test_optimized_list_uses_two_queries) ... 2026-11-25 11:42:12,751 INFO students.requests: GET /api/students/ -> 200 (2.69 ms)
+test_summary_is_cached (students.tests.PerformanceTests.test_summary_is_cached) ... 2026-11-25 11:42:12,758 INFO students.requests: GET /api/students/summary/ -> 200 (1.18 ms)
+test_unoptimized_list_has_n_plus_1_queries (students.tests.PerformanceTests.test_unoptimized_list_has_n_plus_1_queries) ... 2026-11-25 11:42:12,771 INFO students.requests: GET /api/students/unoptimized/ -> 200 (7.65 ms)
+test_anonymous_is_redirected_to_login (students.tests.SecurityTests.test_anonymous_is_redirected_to_login) ... 2026-11-25 11:42:14,453 INFO students.requests: GET /secure-data/ -> 302 (0.88 ms)
+test_authorized_user_can_see_records (students.tests.SecurityTests.test_authorized_user_can_see_records) ... 2026-11-25 11:42:17,029 INFO students.requests: GET /student-records/ -> 200 (3.48 ms)
+test_login_page_works (students.tests.SecurityTests.test_login_page_works) ... 2026-11-25 11:42:18,733 INFO students.requests: GET /accounts/login/ -> 200 (39.87 ms)
+test_regular_user_can_see_secure_data_but_not_records (students.tests.SecurityTests.test_regular_user_can_see_secure_data_but_not_records) ... 2026-11-25 11:42:21,303 INFO students.requests: GET /secure-data/ -> 200 (1.24 ms)
+test_home_endpoint (students.tests.StudentAPITest.test_home_endpoint) ... 2026-11-25 11:42:21,312 INFO students.requests: GET / -> 200 (0.62 ms)
+test_health_endpoint (students.tests.StudentEndpointTests.test_health_endpoint) ... 2026-11-25 11:42:21,315 INFO students.requests: GET /api/health/ -> 200 (0.23 ms)
+test_middleware_adds_timing_header_and_logs (students.tests.StudentEndpointTests.test_middleware_adds_timing_header_and_logs) ... ok
+test_student_detail (students.tests.StudentEndpointTests.test_student_detail) ... 2026-11-25 11:42:21,334 INFO students.requests: GET /api/students/1/ -> 200 (1.54 ms)
+test_student_detail_not_found (students.tests.StudentEndpointTests.test_student_detail_not_found) ... 2026-11-25 11:42:21,336 INFO students.requests: GET /api/students/999/ -> 404 (0.70 ms)
+test_student_list (students.tests.StudentEndpointTests.test_student_list) ... 2026-11-25 11:42:21,339 INFO students.requests: GET /api/students/ -> 200 (1.97 ms)
+test_email_must_be_unique (students.tests.StudentModelTests.test_email_must_be_unique) ... ok
+test_str_and_to_dict (students.tests.StudentModelTests.test_str_and_to_dict) ... ok
+test_success_returns_data (students.tests.ExternalServiceTests.test_success_returns_data) ... ok
+test_timeout_returns_safe_error (students.tests.ExternalServiceTests.test_timeout_returns_safe_error) ... ok
+test_view_returns_503_when_service_down (students.tests.ExternalServiceTests.test_view_returns_503_when_service_down) ... 2026-11-25 11:42:21,344 INFO students.requests: GET /api/students/external/1/ -> 503 (0.30 ms)
+Ran 19 tests in 8.633s
+OK
+ OK

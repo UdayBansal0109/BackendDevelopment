@@ -1,0 +1,55 @@
+> node script.js
+--- Array Demonstration ---
+Fruits array: [ 'Apple', 'Banana', 'Mango' ]
+After push: [ 'Apple', 'Banana', 'Mango', 'Orange' ]
+After pop: [ 'Apple', 'Banana', 'Mango' ]
+Number of fruits: 3
+Fruit 1: Apple
+Fruit 2: Banana
+Fruit 3: Mango
+
+--- Object Demonstration ---
+Student object: { name: 'Uday Bansal', age: 20, course: 'Backend Development' }
+Student Name: Uday Bansal
+Student Course: Backend Development
+Object keys: [ 'name', 'age', 'course' ]
+
+--- Function Demonstration ---
+Hello, Student! Welcome to Backend Development Lab.
+add(5, 7) = 12
+
+> node script2.js
+--- String Methods ---
+Original: Backend Development
+Upper Case: BACKEND DEVELOPMENT
+Lower Case: backend development
+Split by space: [ 'Backend', 'Development' ]
+
+--- Array Methods ---
+After Adding: [ 'Node', 'Express', 'MongoDB' ]
+First Item (Read): Node
+After Updating: [ 'Node.js', 'Express', 'MongoDB' ]
+Lengths (map): [ 7, 7, 7 ]
+Longer than 5 chars (filter): [ 'Node.js', 'Express', 'MongoDB' ]
+
+--- Object Methods ---
+After Adding Key: { name: 'John', role: 'Dev', age: 25 }
+User Name (Read): John
+After Updating Role: { name: 'John', role: 'Senior Dev', age: 25 }
+After Deleting Age: { name: 'John', role: 'Senior Dev' }
+
+> node library.js
+--- All Books ---
+┌─────────┬────┬───────────────────────────┬────────────────────┐
+│ (index) │ id │ title                     │ author             │
+├─────────┼────┼───────────────────────────┼────────────────────┤
+│ 0       │ 1  │ 'Clean Code'              │ 'Robert C. Martin' │
+│ 1       │ 2  │ "You Don't Know JS"       │ 'Kyle Simpson'     │
+│ 2       │ 3  │ 'Node.js Design Patterns' │ 'Mario Casciaro'   │
+└─────────┴────┴───────────────────────────┴────────────────────┘
+
+--- Search: "clean code" ---
+{ id: 1, title: 'Clean Code', author: 'Robert C. Martin' }
+
+--- Search: "Unknown Book" ---
+Book not found

@@ -1,0 +1,16 @@
+{
+  "name": "express-ssr",
+  "version": "1.0.0",
+  "description": "Lecture 8 - EJS server-side rendering",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "ejs": "^7.0.2",
+    "express": "^5.3.0"
+  }
+}

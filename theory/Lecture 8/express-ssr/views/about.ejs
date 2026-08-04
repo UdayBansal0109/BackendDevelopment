@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav><a href="/students">Students</a> | <a href="/about">About</a></nav>
+
+    <h1>About this course</h1>
+    <p><strong>Course:</strong> <%= courseName %></p>
+    <p><strong>Lecturer:</strong> <%= lecturerName %></p>
+    <p>This page is rendered on the server with EJS – the values above are passed from <code>res.render()</code>.</p>
+</body>
+</html>

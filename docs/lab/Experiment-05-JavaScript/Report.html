@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Arrays, Objects &amp; Functions — Backend Development Report</title>
+  <link rel="stylesheet" href="../../assets/css/report.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a class="nav-brand" href="../../index.html">Backend Development</a>
+    <div>
+      <a href="../../index.html">Home</a>
+      <a href="../../index.html#labs">Lab Experiments</a>
+      <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-05-JavaScript">View Source on GitHub</a>
+    </div>
+  </nav>
+
+  <header class="report-header">
+    <h1>05 — JavaScript Arrays, Objects &amp; Functions</h1>
+    <p class="meta">
+      <strong>Course:</strong> Backend Development (CSFS3008P)
+    </p>
+    <p class="meta">Core JavaScript programs run in the browser and Node.js, plus a library book manager (PBL).</p>
+  </header>
+
+  <main class="content">
+<h2>Objective</h2>
+<p>Write programs to demonstrate JavaScript arrays, objects and functions, running both in the browser and with Node.js.</p>
+<h2>Technologies</h2>
+<p>JavaScript (ES6+), Node.js, HTML5</p>
+<hr>
+<h2>Folder Structure</h2>
+<pre><code>
+Experiment-05-JavaScript/
+├── script.js      # Task 1 — arrays, objects, functions and arrow functions
+├── script2.js     # Task 2 — string, array and object methods
+├── index.html     # Task 3 — runs both scripts in the browser console
+├── library.js     # PBL activity — library book manager
+└── output.txt     # Node.js execution output
+</code></pre>
+<h2>How to Run</h2>
+<pre><code class="language-bash">
+node script.js
+node script2.js
+node library.js
+</code></pre>
+<p>Or open <code>index.html</code> in a browser and check the console (F12).</p>
+<hr>
+<h2>Tasks Covered</h2>
+<table><thead><tr>
+<th>#</th>
+<th>Task</th>
+<th>File</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>Arrays (<code>push</code>, <code>pop</code>, <code>forEach</code>), objects, functions and arrow functions</td>
+<td><code>script.js</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>toUpperCase</code>, <code>split</code>, add/read/update on arrays and objects, <code>map</code>, <code>filter</code>, <code>delete</code></td>
+<td><code>script2.js</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>HTML integration with browser console</td>
+<td><code>index.html</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Execution with Node.js</td>
+<td><code>output.txt</code></td>
+</tr>
+<tr>
+<td>PBL</td>
+<td><code>library</code> array, <code>addBook(title, author)</code>, <code>findBook(title)</code> (case-insensitive search)</td>
+<td><code>library.js</code></td>
+</tr>
+</tbody></table>
+<h2>Sample Output</h2>
+<pre><code>
+--- Search: &quot;clean code&quot; ---
+{ id: 1, title: &#x27;Clean Code&#x27;, author: &#x27;Robert C. Martin&#x27; }
+
+--- Search: &quot;Unknown Book&quot; ---
+Book not found
+</code></pre>
+<hr>
+<h2>Key Concepts</h2>
+<ul>
+<li><strong>Array vs object:</strong> arrays are ordered lists accessed by index; objects store key-value pairs accessed by name.</li>
+<li><strong><code>find()</code></strong> returns the first matching element or <code>undefined</code>.</li>
+<li><strong>Arrow functions</strong> provide shorter syntax and do not bind their own <code>this</code>.</li>
+<hr>
+</ul>
+<p><a href="../README.md">Lab Index</a> | <a href="../../README.md">Repository Home</a></p>
+
+<h2>Execution Screenshots</h2>
+<h3>script.js Code</h3>
+<p>`script.js` in VS Code — array operations, object demos and function syntax (named + arrow).</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-05-JavaScript/screenshot/01-script-js-code.png" alt="script.js Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>script2.js Code</h3>
+<p>`script2.js` in VS Code — string methods, array higher-order functions (map, filter) and object operations.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-05-JavaScript/screenshot/02-script2-js-code.png" alt="script2.js Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>library.js Code</h3>
+<p>`library.js` in VS Code — book manager with `addBook()`, `findBook()` (case-insensitive) and table display.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-05-JavaScript/screenshot/03-library-js-code.png" alt="library.js Code" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>Node.js Output</h3>
+<p>`output.txt` in VS Code — console output from running all three scripts with Node.js.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-05-JavaScript/screenshot/04-node-output.png" alt="Node.js Output" style="max-width:100%;border-radius:8px;margin:12px 0;">
+<h3>Node.js Output (continued)</h3>
+<p>Continued output showing library manager results: book table and search results.</p>
+<img src="https://raw.githubusercontent.com/UdayBansal0109/BackendDevelopment/main/lab/Experiment-05-JavaScript/screenshot/05-node-output-continued.png" alt="Node.js Output (continued)" style="max-width:100%;border-radius:8px;margin:12px 0;">
+</main>
+
+  <nav class="bottom-nav">
+    <a href="../../index.html">Back to Home</a>
+    <a href="../../index.html#labs">Back to Lab Experiments</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-01-HTML5/Report.html">&larr; Previous: Web Page with All Elements of HTML5</a>
+    <a href="https://udaybansal0109.github.io/BackendDevelopment/lab/Experiment-07-08-ES6-DOM/Report.html">Next: ES6, DOM Manipulation &amp; Event Handling &rarr;</a>
+    <a href="https://github.com/UdayBansal0109/BackendDevelopment/tree/main/lab/Experiment-05-JavaScript">View Source on GitHub</a>
+  </nav>
+
+  <footer class="report-footer">
+    &copy; 2025 Uday Bansal &middot; CSFS3008P &middot; UPES, Dehradun
+  </footer>
+
+</body>
+</html>
