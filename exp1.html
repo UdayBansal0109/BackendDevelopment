@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>All HTML Tags Demo</title>
+
+    <base href="./">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            line-height: 1.6;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        mark {
+            background-color: yellow;
+        }
+    </style>
+
+    <script>
+        function sayHello() {
+            alert("Hello from JavaScript!");
+        }
+    </script>
+
+    <!-- This is an HTML comment -->
+
+</head>
+
+<body>
+
+<header>
+
+    <hgroup>
+        <h1>Complete HTML Tags Demonstration</h1>
+        <p>A webpage demonstrating HTML elements.</p>
+    </hgroup>
+
+    <nav>
+        <a href="#text">Text</a> |
+        <a href="#lists">Lists</a> |
+        <a href="#table">Table</a> |
+        <a href="#forms">Forms</a>
+    </nav>
+
+</header>
+
+<hr>
+
+<main>
+
+    <!-- ========================= -->
+    <!-- TEXT TAGS -->
+    <!-- ========================= -->
+
+    <section id="text">
+
+        <h2>1. Text Tags</h2>
+
+        <article>
+
+            <h3>Headings</h3>
+
+            <h1>Heading H1</h1>
+            <h2>Heading H2</h2>
+            <h3>Heading H3</h3>
+            <h4>Heading H4</h4>
+            <h5>Heading H5</h5>
+            <h6>Heading H6</h6>
+
+            <p>This is a paragraph.</p>
+
+            This sentence uses a<br>
+            line break.
+
+            <p>
+                This is <b>bold</b>.
+            </p>
+
+            <p>
+                This is <strong>important text</strong>.
+            </p>
+
+            <p>
+                This is <i>italic</i>.
+            </p>
+
+            <p>
+                This is <em>emphasized</em>.
+            </p>
+
+            <p>
+                This is <u>underlined</u>.
+            </p>
+
+            <p>
+                This is <small>small text</small>.
+            </p>
+
+            <p>
+                This is <mark>highlighted text</mark>.
+            </p>
+
+            <p>
+                Price:
+                <del>₹1000</del>
+                <ins>₹700</ins>
+            </p>
+
+            <p>
+                H<sub>2</sub>O
+            </p>
+
+            <p>
+                10<sup>2</sup> = 100
+            </p>
+
+            <p>
+                <s>This information is no longer correct.</s>
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- CONTAINERS -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>2. Containers</h2>
+
+        <div>
+            This text is inside a DIV.
+        </div>
+
+        <p>
+            This word is inside a
+            <span>SPAN</span>.
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- ABBREVIATIONS -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>3. Abbreviations & Definitions</h2>
+
+        <p>
+            <abbr title="HyperText Markup Language">
+                HTML
+            </abbr>
+            is used to create webpages.
+        </p>
+
+        <p>
+            <dfn>HTML</dfn> is a markup language.
+        </p>
+
+        <address>
+            Contact: Uday<br>
+            Email: example@example.com
+        </address>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- QUOTATIONS -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>4. Quotations</h2>
+
+        <blockquote>
+            Learning to code requires practice.
+        </blockquote>
+
+        <p>
+            Steve Jobs once said
+            <q>Stay hungry, stay foolish.</q>
+        </p>
+
+        <p>
+            Book:
+            <cite>The Pragmatic Programmer</cite>
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- LISTS -->
+    <!-- ========================= -->
+
+    <section id="lists">
+
+        <h2>5. Lists</h2>
+
+        <h3>Unordered List</h3>
+
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+        </ul>
+
+
+        <h3>Ordered List</h3>
+
+        <ol>
+            <li>Learn HTML</li>
+            <li>Learn CSS</li>
+            <li>Learn JavaScript</li>
+        </ol>
+
+
+        <h3>Description List</h3>
+
+        <dl>
+
+            <dt>HTML</dt>
+            <dd>Creates webpage structure.</dd>
+
+            <dt>CSS</dt>
+            <dd>Styles webpages.</dd>
+
+        </dl>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- IMAGE -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>6. Images</h2>
+
+        <figure>
+
+            <picture>
+
+                <source
+                    media="(min-width: 800px)"
+                    srcset="https://via.placeholder.com/600">
+
+                <img
+                    src="https://via.placeholder.com/300"
+                    alt="Example image">
+
+            </picture>
+
+            <figcaption>
+                Example responsive image
+            </figcaption>
+
+        </figure>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- IMAGE MAP -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>7. Image Map</h2>
+
+        <img
+            src="https://via.placeholder.com/300"
+            usemap="#examplemap"
+            alt="Image map">
+
+        <map name="examplemap">
+
+            <area
+                shape="rect"
+                coords="0,0,150,150"
+                href="https://example.com"
+                alt="Clickable area">
+
+        </map>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- AUDIO -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>8. Audio</h2>
+
+        <audio controls>
+
+            <source
+                src="audio.mp3"
+                type="audio/mpeg">
+
+            Your browser does not support audio.
+
+        </audio>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- VIDEO -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>9. Video</h2>
+
+        <video width="400" controls>
+
+            <source
+                src="video.mp4"
+                type="video/mp4">
+
+            <track
+                src="captions.vtt"
+                kind="subtitles"
+                srclang="en"
+                label="English">
+
+            Your browser does not support video.
+
+        </video>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- TABLE -->
+    <!-- ========================= -->
+
+    <section id="table">
+
+        <h2>10. Tables</h2>
+
+        <table>
+
+            <caption>
+                Student Marks
+            </caption>
+
+            <colgroup>
+                <col>
+                <col>
+            </colgroup>
+
+            <thead>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Marks</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Uday</td>
+                    <td>95</td>
+                </tr>
+
+                <tr>
+                    <td>Rahul</td>
+                    <td>90</td>
+                </tr>
+
+            </tbody>
+
+            <tfoot>
+
+                <tr>
+                    <td>Average</td>
+                    <td>92.5</td>
+                </tr>
+
+            </tfoot>
+
+        </table>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- FORM -->
+    <!-- ========================= -->
+
+    <section id="forms">
+
+        <h2>11. Forms</h2>
+
+        <form>
+
+            <fieldset>
+
+                <legend>Student Information</legend>
+
+                <label for="name">
+                    Name:
+                </label>
+
+                <input
+                    id="name"
+                    type="text">
+
+                <br><br>
+
+
+                <label for="message">
+                    Message:
+                </label>
+
+                <br>
+
+                <textarea
+                    id="message"
+                    rows="4"
+                    cols="30">
+                </textarea>
+
+                <br><br>
+
+
+                <label for="course">
+                    Course:
+                </label>
+
+                <select id="course">
+
+                    <optgroup label="Computer Science">
+
+                        <option>B.Tech CSE</option>
+                        <option>BCA</option>
+
+                    </optgroup>
+
+                    <optgroup label="Business">
+
+                        <option>BBA</option>
+                        <option>MBA</option>
+
+                    </optgroup>
+
+                </select>
+
+                <br><br>
+
+
+                <label>
+                    Browser:
+                </label>
+
+                <input
+                    list="browsers">
+
+                <datalist id="browsers">
+
+                    <option value="Chrome">
+                    <option value="Firefox">
+                    <option value="Edge">
+
+                </datalist>
+
+                <br><br>
+
+                <button type="button" onclick="sayHello()">
+                    Click Me
+                </button>
+
+            </fieldset>
+
+        </form>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- DETAILS -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>12. Details</h2>
+
+        <details>
+
+            <summary>
+                Click to learn HTML
+            </summary>
+
+            <p>
+                HTML stands for HyperText Markup Language.
+            </p>
+
+        </details>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- PROGRESS -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>13. Progress & Meter</h2>
+
+        <p>
+            Course Progress:
+        </p>
+
+        <progress
+            value="70"
+            max="100">
+            70%
+        </progress>
+
+        <p>
+            Skill Level:
+        </p>
+
+        <meter
+            value="8"
+            min="0"
+            max="10">
+            8/10
+        </meter>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- CODE -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>14. Programming Tags</h2>
+
+        <p>
+            Example code:
+        </p>
+
+        <pre>
+<code>
+print("Hello World")
+</code>
+        </pre>
+
+        <p>
+            Press
+            <kbd>Ctrl</kbd>
+            +
+            <kbd>C</kbd>
+            to copy.
+        </p>
+
+        <p>
+            Program output:
+            <samp>Hello World</samp>
+        </p>
+
+        <p>
+            Variable:
+            <var>x</var> = 10
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- DATA -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>15. Data & Time</h2>
+
+        <p>
+            Product:
+            <data value="1001">
+                Laptop
+            </data>
+        </p>
+
+        <p>
+            Class begins at
+            <time datetime="10:00">
+                10:00 AM
+            </time>
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- BIDIRECTIONAL TEXT -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>16. Bidirectional Text</h2>
+
+        <p>
+            User:
+            <bdi>علي</bdi>
+        </p>
+
+        <p>
+            <bdo dir="rtl">
+                This text is reversed.
+            </bdo>
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- WORD BREAK -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>17. Word Break</h2>
+
+        <p>
+            thisisaveryveryveryvery<wbr>longwordthatcanbreak
+        </p>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- RUBY -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>18. Ruby Annotation</h2>
+
+        <ruby>
+            漢
+            <rp>(</rp>
+            <rt>kan</rt>
+            <rp>)</rp>
+        </ruby>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- CANVAS -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>19. Canvas</h2>
+
+        <canvas
+            id="myCanvas"
+            width="300"
+            height="100"
+            style="border:1px solid black;">
+        </canvas>
+
+        <script>
+
+            const canvas =
+                document.getElementById("myCanvas");
+
+            const ctx =
+                canvas.getContext("2d");
+
+            ctx.fillRect(20, 20, 100, 50);
+
+        </script>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- SVG -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>20. SVG</h2>
+
+        <svg
+            width="200"
+            height="150">
+
+            <circle
+                cx="75"
+                cy="75"
+                r="50"
+                fill="blue">
+
+            </circle>
+
+        </svg>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- IFRAME -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>21. Iframe</h2>
+
+        <iframe
+            src="https://example.com"
+            width="400"
+            height="200">
+        </iframe>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- EMBED -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>22. Embedded Content</h2>
+
+        <embed
+            src="example.pdf"
+            width="300"
+            height="200">
+
+        <object
+            data="example.pdf"
+            type="application/pdf"
+            width="300"
+            height="200">
+
+            <param
+                name="zoom"
+                value="100">
+
+        </object>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- DIALOG -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>23. Dialog</h2>
+
+        <dialog id="myDialog">
+
+            <p>
+                Hello! This is a dialog box.
+            </p>
+
+            <button
+                onclick="document.getElementById('myDialog').close()">
+
+                Close
+
+            </button>
+
+        </dialog>
+
+        <button
+            onclick="document.getElementById('myDialog').showModal()">
+
+            Open Dialog
+
+        </button>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- OUTPUT -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>24. Output</h2>
+
+        <form
+            oninput="result.value =
+            parseInt(a.value) +
+            parseInt(b.value)">
+
+            <input
+                type="number"
+                id="a"
+                value="10">
+
+            +
+
+            <input
+                type="number"
+                id="b"
+                value="20">
+
+            =
+
+            <output
+                name="result"
+                for="a b">
+                30
+            </output>
+
+        </form>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- TEMPLATE -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>25. Template</h2>
+
+        <p>
+            The template below exists in HTML
+            but is not displayed automatically.
+        </p>
+
+        <template id="studentTemplate">
+
+            <div>
+                Student Template Content
+            </div>
+
+        </template>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- ASIDE -->
+    <!-- ========================= -->
+
+    <aside>
+
+        <h2>Aside</h2>
+
+        <p>
+            This is additional/sidebar information.
+        </p>
+
+    </aside>
+
+
+    <!-- ========================= -->
+    <!-- DEPRECATED TAGS -->
+    <!-- ========================= -->
+
+    <section>
+
+        <h2>26. Deprecated HTML Tags</h2>
+
+        <p>
+            ⚠️ The following tags are obsolete.
+            They are included ONLY for learning.
+        </p>
+
+
+        <center>
+            This text uses CENTER.
+        </center>
+
+
+        <big>
+            Big text
+        </big>
+
+
+        <br>
+
+
+        <font
+            color="red"
+            size="5">
+
+            Font tag example
+
+        </font>
+
+
+        <p>
+            <strike>
+                Strike text
+            </strike>
+        </p>
+
+
+        <p>
+            <tt>
+                Teletype text
+            </tt>
+        </p>
+
+
+        <acronym title="World Health Organization">
+            WHO
+        </acronym>
+
+
+        <dir>
+
+            <li>Old directory item</li>
+
+        </dir>
+
+
+        <menu>
+
+            <menuitem label="Deprecated menu item">
+            </menuitem>
+
+        </menu>
+
+
+        <!--
+        basefont is deprecated and may be ignored
+        -->
+
+        <basefont
+            size="4"
+            color="blue">
+
+
+        <!--
+        Applet is deprecated and will not run
+        -->
+
+        <applet
+            code="Example.class"
+            width="200"
+            height="100">
+
+            Old Java Applet
+
+        </applet>
+
+
+        <!--
+        Frames and Framesets are obsolete.
+
+        Modern HTML does not support putting a
+        frameset normally inside body.
+
+        They are shown here for demonstration:
+
+        <frameset cols="50%,50%">
+
+            <frame src="page1.html">
+            <frame src="page2.html">
+
+            <noframes>
+                Frames are not supported.
+            </noframes>
+
+        </frameset>
+        -->
+
+        <noframes>
+            Your browser does not support frames.
+        </noframes>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- NOSCRIPT -->
+    <!-- ========================= -->
+
+    <noscript>
+
+        <p>
+            JavaScript is disabled in your browser.
+        </p>
+
+    </noscript>
+
+</main>
+
+
+<footer>
+
+    <hr>
+
+    <p>
+        Complete HTML Tags Learning Page
+    </p>
+
+</footer>
+
+</body>
+
+</html>

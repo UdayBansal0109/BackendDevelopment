@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Backend Development - HTML5 Lab</title>
+
+    <style>
+        /* =========================
+           RESET AND BASE STYLES
+        ========================== */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        /* =========================
+           HEADER
+        ========================== */
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            margin-bottom: 1rem;
+        }
+        /* =========================
+           NAVIGATION
+        ========================== */
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        /* =========================
+           MAIN CONTENT
+        ========================== */
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        section h3 {
+            color: #2c3e50;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+        /* =========================
+           LISTS
+        ========================== */
+        
+        ul,
+        ol {
+            padding-left: 2rem;
+            margin: 0.5rem 0;
+        }
+        
+        ul ul,
+        ol ul {
+            padding-left: 1.5rem;
+        }
+        
+        dl {
+            margin-top: 1rem;
+        }
+        
+        dt {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 1rem;
+        }
+        
+        dd {
+            margin-left: 2rem;
+        }
+        /* =========================
+           TABLE
+        ========================== */
+        
+        table {
+            width: 100%;
+            max-width: 900px;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background: #3498db;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        tr:hover {
+            background: #f1f1f1;
+        }
+        
+        caption {
+            caption-side: bottom;
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+        /* =========================
+           FORMS
+        ========================== */
+        
+        form {
+            max-width: 700px;
+        }
+        
+        fieldset {
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 6px;
+        }
+        
+        legend {
+            font-weight: bold;
+            padding: 0 0.5rem;
+            color: #2c3e50;
+        }
+        
+        form div {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: inline-block;
+            width: 150px;
+            font-weight: 500;
+        }
+        
+        input:not([type="radio"]):not([type="checkbox"]):not([type="color"]):not([type="range"]),
+        select,
+        textarea {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: auto;
+        }
+        
+        input[type="color"] {
+            width: 60px;
+            height: 40px;
+            padding: 2px;
+        }
+        
+        input[type="range"] {
+            width: 200px;
+        }
+        
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background: #2980b9;
+        }
+        
+        button[type="reset"] {
+            background: #95a5a6;
+            margin-left: 0.5rem;
+        }
+        
+        button[type="reset"]:hover {
+            background: #7f8c8d;
+        }
+        
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+        }
+        
+        .radio-group div,
+        .checkbox-group div {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .radio-group label,
+        .checkbox-group label {
+            width: auto;
+        }
+        /* =========================
+           MULTIMEDIA
+        ========================== */
+        
+        video,
+        audio {
+            max-width: 100%;
+            margin: 0.5rem 0;
+        }
+        
+        figure {
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        figcaption {
+            font-style: italic;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        picture img,
+        figure img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* =========================
+           INTERACTIVE ELEMENTS
+        ========================== */
+        
+        details {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        
+        details summary {
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        details ul,
+        details ol {
+            margin-top: 0.5rem;
+        }
+        
+        dialog {
+            padding: 2rem;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+        }
+        
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        /* =========================
+           FOOTER
+        ========================== */
+        
+        footer {
+            text-align: center;
+            padding: 1rem;
+            color: #666;
+            margin-top: 2rem;
+        }
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================== */
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            header {
+                padding: 1rem;
+            }
+            section {
+                padding: 1rem;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            label {
+                width: 100%;
+                display: block;
+                margin-bottom: 0.2rem;
+            }
+            input:not([type="radio"]):not([type="checkbox"]):not([type="color"]):not([type="range"]),
+            select,
+            textarea {
+                max-width: 100%;
+            }
+            table {
+                font-size: 0.9rem;
+            }
+            th,
+            td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <h1>Backend Development</h1>
+
+        <p>
+            HTML5 Lab - Semester 5 | B.Tech Core CSE
+        </p>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#courses">Courses</a>
+                </li>
+
+                <li>
+                    <a href="#comparison">Comparison</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+
+                <li>
+                    <a href="#multimedia">Media</a>
+                </li>
+
+                <li>
+                    <a href="#interactive">Interactive</a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main>
+
+
+        <!-- =========================
+             HOME SECTION
+        ========================== -->
+
+        <section id="home">
+
+            <h2>
+                Welcome to Backend Development Lab
+            </h2>
+
+            <p>
+                This lab demonstrates the implementation of various HTML5 elements and their use in backend development.
+            </p>
+
+            <p>
+                <strong>Student:</strong> Uday Bansal
+            </p>
+
+            <p>
+                <strong>Branch:</strong> Core CSE
+            </p>
+
+            <p>
+                <strong>Semester:</strong> 5th Semester
+            </p>
+
+            <p>
+                <strong>College:</strong> UPES
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT SECTION
+        ========================== -->
+
+        <section id="about">
+
+            <h2>
+                About Backend Development
+            </h2>
+
+            <p>
+                Backend development involves server-side programming, database management, and API creation.
+            </p>
+
+
+            <h3>
+                Key Concepts
+            </h3>
+
+            <p>
+                <strong>
+                    Server-Side Programming:
+                </strong> Writing code that runs on the server.
+            </p>
+
+            <p>
+                <em>
+                    Database Management:
+                </em> Storing and retrieving data efficiently.
+            </p>
+
+            <p>
+                <mark>
+                    API Development:
+                </mark> Creating interfaces for frontend-backend communication.
+            </p>
+
+            <p>
+                <del>
+                    Traditional approaches
+                </del> have been replaced by
+
+                <ins>
+                    modern frameworks
+                </ins>.
+            </p>
+
+            <p>
+                Example:
+
+                <code>
+                    const result = await fetch('/api/data');
+                </code>
+            </p>
+
+            <p>
+                Shortcut:
+
+                <kbd>
+                    Ctrl + Shift + I
+                </kbd> opens developer tools.
+            </p>
+
+            <p>
+                Term:
+
+                <abbr title="Application Programming Interface">
+                    API
+                </abbr> is essential for modern web applications.
+            </p>
+
+            <p>
+                Contact:
+
+                <address>
+                    backend.course@university.edu
+                </address>
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             COURSES / LISTS
+        ========================== -->
+
+        <section id="courses">
+
+            <h2>
+                Backend Technologies
+            </h2>
+
+
+            <h3>
+                Programming Languages, Frameworks and Databases
+            </h3>
+
+            <ul>
+
+                <li>
+                    Programming Languages
+
+                    <ul>
+                        <li>Python</li>
+                        <li>JavaScript (Node.js)</li>
+                        <li>Java</li>
+                        <li>Ruby</li>
+                    </ul>
+
+                </li>
+
+
+                <li>
+                    Frameworks
+
+                    <ul>
+                        <li>Django</li>
+                        <li>Flask</li>
+                        <li>Express.js</li>
+                        <li>Spring Boot</li>
+                    </ul>
+
+                </li>
+
+
+                <li>
+                    Databases
+
+                    <ul>
+                        <li>MySQL</li>
+                        <li>PostgreSQL</li>
+                        <li>MongoDB</li>
+                        <li>Redis</li>
+                    </ul>
+
+                </li>
+
+            </ul>
+
+
+            <h3>
+                Learning Path
+            </h3>
+
+            <ol>
+
+                <li>
+                    Learn HTML5 and CSS3
+                </li>
+
+                <li>
+                    Understand JavaScript
+                </li>
+
+                <li>
+                    Choose a backend language
+                </li>
+
+                <li>
+                    Learn a framework
+                </li>
+
+                <li>
+                    Study database design
+                </li>
+
+                <li>
+                    Build RESTful APIs
+                </li>
+
+                <li>
+                    Deploy to cloud
+                </li>
+
+            </ol>
+
+
+            <h3>
+                Technologies and Their Uses
+            </h3>
+
+            <dl>
+
+                <dt>
+                    Django
+                </dt>
+
+                <dd>
+                    High-level Python web framework promoting rapid development.
+                </dd>
+
+
+                <dt>
+                    Express.js
+                </dt>
+
+                <dd>
+                    Minimalist web framework for Node.js applications.
+                </dd>
+
+
+                <dt>
+                    MongoDB
+                </dt>
+
+                <dd>
+                    NoSQL document database for modern applications.
+                </dd>
+
+            </dl>
+
+        </section>
+
+
+        <!-- =========================
+             TABLE SECTION
+        ========================== -->
+
+        <section id="comparison">
+
+            <h2>
+                Backend Technology Comparison
+            </h2>
+
+            <table>
+
+                <caption>
+                    Table 1: Comparison of Popular Backend Technologies
+                </caption>
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Technology
+                        </th>
+
+                        <th>
+                            Type
+                        </th>
+
+                        <th>
+                            Learning Curve
+                        </th>
+
+                        <th>
+                            Use Case
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            Node.js + Express
+                        </td>
+
+                        <td>
+                            JavaScript Runtime + Framework
+                        </td>
+
+                        <td>
+                            Moderate
+                        </td>
+
+                        <td>
+                            Real-time apps, REST APIs
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Python + Django
+                        </td>
+
+                        <td>
+                            Language + Full-Stack Framework
+                        </td>
+
+                        <td>
+                            Moderate
+                        </td>
+
+                        <td>
+                            Content-heavy sites, admin panels
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Python + Flask
+                        </td>
+
+                        <td>
+                            Language + Micro-framework
+                        </td>
+
+                        <td>
+                            Easy
+                        </td>
+
+                        <td>
+                            Microservices, REST APIs
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Java + Spring Boot
+                        </td>
+
+                        <td>
+                            Language + Enterprise Framework
+                        </td>
+
+                        <td>
+                            Steep
+                        </td>
+
+                        <td>
+                            Enterprise applications, microservices
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+
+                <tfoot>
+
+                    <tr>
+
+                        <td colspan="4">
+
+                            Table 1: Backend Technology Comparison
+
+                        </td>
+
+                    </tr>
+
+                </tfoot>
+
+            </table>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT / FORM SECTION
+        ========================== -->
+
+        <section id="contact">
+
+            <h2>
+                Contact Us
+            </h2>
+
+
+            <form id="contactForm">
+
+
+                <!-- PERSONAL INFORMATION -->
+
+                <fieldset>
+
+                    <legend>
+                        Personal Information
+                    </legend>
+
+
+                    <div>
+
+                        <label for="fullname">
+                            Full Name:
+                        </label>
+
+                        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="email">
+                            Email:
+                        </label>
+
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="phone">
+                            Phone:
+                        </label>
+
+                        <input type="tel" id="phone" name="phone" placeholder="+91-XXXXXXXXXX">
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="age">
+                            Age:
+                        </label>
+
+                        <input type="number" id="age" name="age" min="18" max="100">
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="dob">
+                            Date of Birth:
+                        </label>
+
+                        <input type="date" id="dob" name="dob">
+
+                    </div>
+
+                </fieldset>
+
+
+                <!-- COURSE INTEREST -->
+
+                <fieldset>
+
+                    <legend>
+                        Course Interest
+                    </legend>
+
+
+                    <div>
+
+                        <label for="course">
+                            Select Course:
+                        </label>
+
+                        <select id="course" name="course">
+
+                            <optgroup label="Backend Courses">
+
+                                <option value="node">
+                                    Node.js Development
+                                </option>
+
+                                <option value="python">
+                                    Python Backend
+                                </option>
+
+                                <option value="django">
+                                    Django Framework
+                                </option>
+
+                            </optgroup>
+
+
+                            <optgroup label="Frontend Courses">
+
+                                <option value="react">
+                                    React.js
+                                </option>
+
+                                <option value="angular">
+                                    Angular
+                                </option>
+
+                            </optgroup>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- RADIO BUTTONS -->
+
+                    <div>
+
+                        <label>
+                            Experience Level:
+                        </label>
+
+
+                        <div class="radio-group">
+
+                            <div>
+
+                                <input type="radio" id="beginner" name="level" value="beginner">
+
+                                <label for="beginner">
+                                    Beginner
+                                </label>
+
+                            </div>
+
+
+                            <div>
+
+                                <input type="radio" id="intermediate" name="level" value="intermediate">
+
+                                <label for="intermediate">
+                                    Intermediate
+                                </label>
+
+                            </div>
+
+
+                            <div>
+
+                                <input type="radio" id="advanced" name="level" value="advanced">
+
+                                <label for="advanced">
+                                    Advanced
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CHECKBOXES -->
+
+                    <div>
+
+                        <label>
+                            Topics of Interest:
+                        </label>
+
+
+                        <div class="checkbox-group">
+
+                            <div>
+
+                                <input type="checkbox" id="api" name="topics" value="api">
+
+                                <label for="api">
+                                    API Development
+                                </label>
+
+                            </div>
+
+
+                            <div>
+
+                                <input type="checkbox" id="db" name="topics" value="database">
+
+                                <label for="db">
+                                    Database Design
+                                </label>
+
+                            </div>
+
+
+                            <div>
+
+                                <input type="checkbox" id="security" name="topics" value="security">
+
+                                <label for="security">
+                                    Security & Authentication
+                                </label>
+
+                            </div>
+
+
+                            <div>
+
+                                <input type="checkbox" id="devops" name="topics" value="devops">
+
+                                <label for="devops">
+                                    DevOps & Deployment
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RANGE -->
+
+                    <div>
+
+                        <label for="experience">
+                            Experience (years):
+                        </label>
+
+                        <input type="range" id="experience" name="experience" min="0" max="10" value="1">
+
+                        <output id="experienceOutput">
+                            1
+                        </output>
+
+                    </div>
+
+                </fieldset>
+
+
+                <!-- ADDITIONAL INFORMATION -->
+
+                <fieldset>
+
+                    <legend>
+                        Additional Information
+                    </legend>
+
+
+                    <div>
+
+                        <label for="message">
+                            Message:
+                        </label>
+
+                        <textarea id="message" name="message" rows="5" cols="30" placeholder="Tell us about your learning goals..."></textarea>
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="color">
+                            Favorite Color:
+                        </label>
+
+                        <input type="color" id="color" name="color" value="#3498db">
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="file">
+                            Upload Resume:
+                        </label>
+
+                        <input type="file" id="file" name="file" accept=".pdf,.doc,.docx">
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="url">
+                            Portfolio URL:
+                        </label>
+
+                        <input type="url" id="url" name="url" placeholder="https://yourportfolio.com">
+
+                    </div>
+
+                </fieldset>
+
+
+                <!-- FORM BUTTONS -->
+
+                <div>
+
+                    <button type="submit">
+                        Submit Application
+                    </button>
+
+                    <button type="reset">
+                        Clear Form
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- =========================
+             MULTIMEDIA SECTION
+        ========================== -->
+
+        <section id="multimedia">
+
+            <h2>
+                Multimedia Content
+            </h2>
+
+
+            <!-- IMAGE -->
+
+            <article>
+
+                <h3>
+                    Images
+                </h3>
+
+                <picture>
+
+                    <source media="(min-width: 800px)" srcset="https://via.placeholder.com/800x400/2c3e50/white?text=Backend+Development">
+
+                    <source media="(min-width: 400px)" srcset="https://via.placeholder.com/400x200/2c3e50/white?text=Backend">
+
+                    <img src="https://via.placeholder.com/200x100/2c3e50/white?text=Backend" alt="Backend Development Illustration">
+
+                </picture>
+
+
+                <figure>
+
+                    <img src="https://via.placeholder.com/300x200/3498db/white?text=REST+API" alt="REST API Illustration">
+
+                    <figcaption>
+                        Figure 1: RESTful API Concept
+                    </figcaption>
+
+                </figure>
+
+            </article>
+
+
+            <!-- AUDIO -->
+
+            <article>
+
+                <h3>
+                    Audio
+                </h3>
+
+                <audio controls>
+
+                    <source
+                        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+                        type="audio/mpeg"
+                    >
+
+                    Your browser does not support
+                    the audio element.
+
+                </audio>
+
+            </article>
+
+
+            <!-- VIDEO -->
+
+            <article>
+
+                <h3>
+                    Video
+                </h3>
+
+                <video controls width="560" height="315">
+
+                    <source
+                        src="https://www.w3schools.com/html/mov_bbb.mp4"
+                        type="video/mp4"
+                    >
+
+                    Your browser does not support
+                    the video element.
+
+                </video>
+
+            </article>
+
+
+            <!-- PROGRESS -->
+
+            <article>
+
+                <h3>
+                    Progress Indicators
+                </h3>
+
+                <p>
+
+                    Course Progress:
+
+                    <progress value="45" max="100">
+                        45%
+                    </progress>
+
+                </p>
+
+
+                <p>
+
+                    Storage Used:
+
+                    <meter value="6" min="0" max="10">
+                        60%
+                    </meter>
+
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <!-- =========================
+             INTERACTIVE SECTION
+        ========================== -->
+
+        <section id="interactive">
+
+            <h2>
+                Interactive Elements
+            </h2>
+
+
+            <!-- DETAILS -->
+
+            <details>
+
+                <summary>
+                    View Course Prerequisites
+                </summary>
+
+                <ul>
+
+                    <li>
+                        Basic understanding of programming concepts
+                    </li>
+
+                    <li>
+                        Familiarity with HTML and CSS
+                    </li>
+
+                    <li>
+                        Knowledge of basic data structures
+                    </li>
+
+                </ul>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    View Course Outcomes
+                </summary>
+
+                <ol>
+
+                    <li>
+                        Understand Backend Development Fundamentals
+                    </li>
+
+                    <li>
+                        Create and build web pages and applications
+                    </li>
+
+                    <li>
+                        Utilize frameworks and APIs
+                    </li>
+
+                    <li>
+                        Apply security best practices and conduct testing
+                    </li>
+
+                    <li>
+                        Demonstrate effective team collaboration
+                    </li>
+
+                </ol>
+
+            </details>
+
+
+            <!-- DATALIST -->
+
+            <div>
+
+                <h3>
+                    Search with Autocomplete
+                </h3>
+
+                <form>
+
+                    <label for="techSearch">
+                        Search Backend Technologies:
+                    </label>
+
+                    <input list="technologies" id="techSearch" name="techSearch" placeholder="Type to search...">
+
+
+                    <datalist id="technologies">
+
+                        <option value="Node.js">
+                        <option value="Express.js">
+                        <option value="Django">
+                        <option value="Flask">
+                        <option value="Spring Boot">
+                        <option value="Ruby on Rails">
+                        <option value="MongoDB">
+                        <option value="MySQL">
+                        <option value="PostgreSQL">
+                        <option value="Redis">
+                        <option value="Docker">
+                        <option value="Kubernetes">
+
+                    </datalist>
+
+                </form>
+
+            </div>
+
+
+            <!-- DIALOG -->
+
+            <div style="margin-top: 1rem;">
+
+                <button id="openDialog">
+                    Open Dialog
+                </button>
+
+
+                <dialog id="myDialog">
+
+                    <h3>
+                        Important Message
+                    </h3>
+
+                    <p>
+                        This is a dialog box created using the HTML5 dialog element.
+                    </p>
+
+                    <p>
+                        It can be used for modal popups, confirmations, or announcements.
+                    </p>
+
+                    <button id="closeDialog">
+                        Close
+                    </button>
+
+                </dialog>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Backend Development Course
+        </p>
+
+        <p>
+            B.Tech Core CSE | Semester 5 | UPES
+        </p>
+
+        <p>
+            Student: Uday Bansal
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+        /* =========================
+                   RANGE SLIDER
+                ========================== */
+
+        const experience =
+            document.getElementById("experience");
+
+        const output =
+            document.getElementById("experienceOutput");
+
+
+        if (experience && output) {
+
+            experience.addEventListener(
+                "input",
+                function() {
+
+                    output.textContent = this.value;
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           FORM SUBMISSION
+        ========================== */
+
+        const form =
+            document.getElementById("contactForm");
+
+
+        if (form) {
+
+            form.addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "Form submitted successfully!\n" +
+                        "(Demo only - no data was sent.)"
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           DIALOG
+        ========================== */
+
+        const dialog =
+            document.getElementById("myDialog");
+
+        const openButton =
+            document.getElementById("openDialog");
+
+        const closeButton =
+            document.getElementById("closeDialog");
+
+
+        if (dialog && openButton && closeButton) {
+
+            openButton.addEventListener(
+                "click",
+                function() {
+
+                    dialog.showModal();
+
+                }
+            );
+
+
+            closeButton.addEventListener(
+                "click",
+                function() {
+
+                    dialog.close();
+
+                }
+            );
+
+        }
+
+
+        /* =========================
+           CONSOLE MESSAGE
+        ========================== */
+
+        console.log(
+            "Backend Development Lab - Experiment 1"
+        );
+
+        console.log(
+            "HTML5 elements successfully loaded."
+        );
+    </script>
+
+</body>
+
+</html>
