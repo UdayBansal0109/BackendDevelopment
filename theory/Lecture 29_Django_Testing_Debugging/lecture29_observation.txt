@@ -1,0 +1,13 @@
+**Lecture 29: Testing and Debugging Django Applications**
+
+**Objective:** To test the Student Management API using Django's automated testing framework and understand how to identify and fix errors.
+
+**Implementation:**
+1. Created `tests.py` inside the `students` app.
+2. Wrote a test to verify the API response and HTTP status code.
+3. Ran tests using Django's test runner.
+4. Introduced an intentional error by changing HTTP status from 200 to 201.
+5. Observed the assertion failure.
+6. Restored the correct status code and reran the tests successfully.
+
+**Result:** Successfully tested the Django API endpoint and demonstrated the debugging process.
